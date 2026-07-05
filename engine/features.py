@@ -305,38 +305,80 @@ def f_workout(horse: Horse, race: Race, entry: Entry) -> Factor:
 
 
 def f_pedigree(horse: Horse, race: Race, entry: Entry) -> Factor:
-    """Bloodline quality (sire progeny stats), weighted up when the horse is
-    unproven at today's surface/distance — where pedigree matters most."""
+    """Condition-specific bloodline aptitude.
+
+    Instead of one overall sire win-rate, we read the sire's progeny profile
+    for *today's* surface (芝勝率/ダ勝率), quality (EI = earnings index), and
+    average winning distance — then judge how well today's surface & trip fit
+    the blood.  The signal is amplified when the horse itself is unproven at
+    the condition, where pedigree carries the most weight.
+    """
     ped = horse.pedigree or {}
     ss = horse.sire_stats or {}
     if not ped.get("sire"):
         return Factor("pedigree", "血統", 50, "血統情報を取得できませんでした", 0)
-    wr = ss.get("win_rate")
+
+    is_turf = race.surface == "芝"
+    surf_label = "芝" if is_turf else "ダート"
+    surf_wr = ss.get("turf_win_rate") if is_turf else ss.get("dirt_win_rate")
+    other_wr = ss.get("dirt_win_rate") if is_turf else ss.get("turf_win_rate")
+    avg_dist = ss.get("avg_dist_turf") if is_turf else ss.get("avg_dist_dirt")
+    ei = ss.get("ei")
     graded = ss.get("graded_wins", 0)
-    if wr is not None:
-        quality = 46 + (wr - 0.05) * 350
-        if graded >= 20:
-            quality += 4
-        elif graded >= 8:
-            quality += 2
-        quality = max(42, min(66, quality))
+    wr = surf_wr if surf_wr is not None else ss.get("win_rate")
+
+    # base quality: prefer EI (population-normalised), else surface win-rate
+    if ei is not None:
+        base = 50 + (ei - 1.0) * 20         # EI 1.0 -> 50, 0.5 -> 40, 1.6 -> 62
+    elif wr is not None:
+        base = 46 + (wr - 0.06) * 350
     else:
-        quality = 50
+        base = 50
+    # progeny lean toward today's surface?
+    if surf_wr is not None and other_wr:
+        if surf_wr >= other_wr * 1.25:
+            base += 3
+        elif surf_wr <= other_wr * 0.8:
+            base -= 3
+    if graded >= 20:
+        base += 3
+    elif graded >= 8:
+        base += 1.5
+
+    # distance fit vs the sire's average winning distance on this surface
+    dist_note = ""
+    if avg_dist and race.distance:
+        diff = race.distance - avg_dist
+        ad = abs(diff)
+        if ad <= 150:
+            base += 5; dist_note = f"{race.distance}mは血統ドンピシャ"
+        elif ad <= 350:
+            base += 1
+        elif diff > 350:
+            base -= 4; dist_note = f"{race.distance}mは血統的にやや長くスタミナ面が課題"
+        else:
+            base -= 3; dist_note = f"{race.distance}mは血統的にやや忙しい"
+    base = max(38, min(68, base))
+
     surf_runs = sum(1 for r in horse.history if r.surface == race.surface)
     dist_runs = sum(1 for r in horse.history
                     if r.distance and race.distance and abs(r.distance - race.distance) <= 200)
     unproven = surf_runs < 2 or dist_runs < 2
-    score = quality if unproven else 50 + (quality - 50) * 0.4
+    score = base if unproven else 50 + (base - 50) * 0.45
+
     sire = ped.get("sire", "?")
     ds = ped.get("damsire", "")
-    wr_txt = f"産駒勝率{wr*100:.0f}%" if wr is not None else "産駒成績不明"
-    g_txt = f"・重賞{graded}勝" if graded else ""
-    note = f"父{sire}（{wr_txt}{g_txt}）"
+    wr_txt = f"{surf_label}勝率{wr*100:.0f}%" if wr is not None else "産駒成績不明"
+    ei_txt = f"・EI{ei}" if ei is not None else ""
+    ad_txt = f"・平均勝ち距離{avg_dist}m" if avg_dist else ""
+    note = f"父{sire}産駒は{wr_txt}{ei_txt}{ad_txt}"
     if ds:
-        note += f"×母父{ds}"
+        note += f"（母父{ds}）"
+    if dist_note:
+        note += f"。{dist_note}"
     if unproven:
-        cond = "初" + ("芝" if race.surface == "芝" else "ダート") if surf_runs < 2 else "距離替わり"
-        note += f"。{cond}だが血統的な後押しは" + ("あり" if score >= 54 else "限定的")
+        cond = f"初{surf_label}" if surf_runs < 2 else "距離替わり"
+        note += f"。{cond}だが血統の後押しは" + ("あり" if score >= 54 else "限定的")
     return Factor("pedigree", "血統", score, note, 1 if wr is not None else 0)
 
 

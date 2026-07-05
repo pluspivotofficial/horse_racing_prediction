@@ -387,23 +387,71 @@ def parse_pedigree(html: str) -> dict:
     }
 
 
+def _flatten_sire_header(table) -> list[str]:
+    """Expand the grouped 2-row sire header into one flat label list.
+
+    Grouped columns (重賞/特別/平場/芝/ダート) carry colspan=2 and split into
+    出走/勝利 in the sub-row, e.g. '芝出走','芝勝利'.
+    """
+    rows = table.select("tr")
+    if not rows:
+        return []
+    flat = []
+    for th in rows[0].find_all(["th", "td"]):
+        label = th.get_text(strip=True)
+        span = int(th.get("colspan", 1))
+        if span == 1:
+            flat.append(label)
+        else:
+            flat.extend([label + "出走", label + "勝利"])
+    return flat
+
+
 def parse_sire_stats(html: str) -> dict:
-    """Progeny aggregates from the sire page's cumulative (累計) row."""
+    """Progeny aggregates from the sire page's cumulative (累計) row, including
+    surface (芝/ダート) splits, Earnings Index, and average winning distance —
+    the raw material for *condition-specific* pedigree aptitude."""
     soup = BeautifulSoup(html, "lxml")
-    for tr in soup.select("table.race_table_01 tr"):
+    table = soup.select_one("table.race_table_01")
+    if not table:
+        return {}
+    flat = _flatten_sire_header(table)
+    def idx(label):
+        return flat.index(label) if label in flat else None
+    for tr in table.select("tr"):
         cells = [c.get_text(strip=True) for c in tr.find_all(["th", "td"])]
-        if cells and cells[0] in ("累計", "通算"):
-            nums = [_num(c) for c in cells]
-            # row shape: 累計, (順位), 出走頭数, 勝馬頭数, 出走回数, 勝利回数, 重賞出走, 重賞勝利
-            vals = [n for n in nums if n is not None]
-            if len(vals) >= 4:
-                starts = vals[2] if len(vals) > 2 else None
-                wins = vals[3] if len(vals) > 3 else None
-                graded = vals[5] if len(vals) > 5 else 0
-                if starts and wins is not None and starts > 0:
-                    return {"starts": int(starts), "wins": int(wins),
-                            "win_rate": round(wins / starts, 4),
-                            "graded_wins": int(graded)}
+        if not cells or cells[0] not in ("累計", "通算"):
+            continue
+
+        def at(label):
+            i = idx(label)
+            return cells[i] if i is not None and i < len(cells) else ""
+
+        starts = _num(at("出走回数")) or _num(cells[4] if len(cells) > 4 else "")
+        wins = _num(at("勝利回数")) or _num(cells[5] if len(cells) > 5 else "")
+        if not starts or wins is None or starts <= 0:
+            return {}
+        out = {"starts": int(starts), "wins": int(wins),
+               "win_rate": round(wins / starts, 4),
+               "graded_wins": int(_num(at("重賞勝利")) or 0)}
+        ts, tw = _num(at("芝出走")), _num(at("芝勝利"))
+        ds, dw = _num(at("ダート出走")), _num(at("ダート勝利"))
+        if ts and tw is not None:
+            out["turf_starts"], out["turf_wins"] = int(ts), int(tw)
+            out["turf_win_rate"] = round(tw / ts, 4) if ts else None
+        if ds and dw is not None:
+            out["dirt_starts"], out["dirt_wins"] = int(ds), int(dw)
+            out["dirt_win_rate"] = round(dw / ds, 4) if ds else None
+        ei = _num(at("EI"))
+        if ei is not None:
+            out["ei"] = ei
+        adt = _num(at("平均距離(芝)"))
+        add = _num(at("平均距離(ダ)"))
+        if adt:
+            out["avg_dist_turf"] = int(adt)
+        if add:
+            out["avg_dist_dirt"] = int(add)
+        return out
     return {}
 
 
