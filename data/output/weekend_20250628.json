@@ -9,6 +9,1266 @@
     "小倉",
     "福島"
   ],
+  "simulation": {
+    "unit_yen": 100,
+    "bankroll_start": 100000,
+    "bankroll_end": 146430,
+    "staked": 11689,
+    "returned": 58119,
+    "profit": 46430,
+    "roi": 4.972,
+    "n_bets": 116,
+    "n_hits": 32,
+    "hit_rate": 0.276,
+    "max_drawdown": 2219,
+    "best_ticket": {
+      "bet_type": "3連複フォーメーション",
+      "selection": "軸 3,8 - 相手 6,9,5",
+      "stake_yen": 135,
+      "return_yen": 19004,
+      "profit_yen": 18868,
+      "hit": true,
+      "race": "小倉12R"
+    },
+    "by_type": {
+      "馬連": {
+        "stake": 2555,
+        "return": 2418,
+        "bets": 26,
+        "hits": 3,
+        "roi": 0.946,
+        "hit_rate": 0.115
+      },
+      "単勝": {
+        "stake": 1388,
+        "return": 2758,
+        "bets": 29,
+        "hits": 4,
+        "roi": 1.987,
+        "hit_rate": 0.138
+      },
+      "ワイド": {
+        "stake": 3428,
+        "return": 16273,
+        "bets": 33,
+        "hits": 13,
+        "roi": 4.747,
+        "hit_rate": 0.394
+      },
+      "複勝": {
+        "stake": 2293,
+        "return": 4085,
+        "bets": 13,
+        "hits": 8,
+        "roi": 1.782,
+        "hit_rate": 0.615
+      },
+      "3連複フォーメーション": {
+        "stake": 2025,
+        "return": 32585,
+        "bets": 15,
+        "hits": 4,
+        "roi": 16.091,
+        "hit_rate": 0.267
+      }
+    },
+    "equity_curve": [
+      {
+        "label": "開始",
+        "bankroll": 100000
+      },
+      {
+        "label": "福島9R",
+        "bankroll": 101906
+      },
+      {
+        "label": "福島10R",
+        "bankroll": 102751
+      },
+      {
+        "label": "福島11R",
+        "bankroll": 103570
+      },
+      {
+        "label": "福島12R",
+        "bankroll": 102898
+      },
+      {
+        "label": "小倉9R",
+        "bankroll": 102328
+      },
+      {
+        "label": "小倉10R",
+        "bankroll": 101963
+      },
+      {
+        "label": "小倉11R",
+        "bankroll": 101351
+      },
+      {
+        "label": "小倉12R",
+        "bankroll": 129307
+      },
+      {
+        "label": "函館9R",
+        "bankroll": 129580
+      },
+      {
+        "label": "函館10R",
+        "bankroll": 129377
+      },
+      {
+        "label": "函館11R",
+        "bankroll": 146116
+      },
+      {
+        "label": "函館12R",
+        "bankroll": 146028
+      },
+      {
+        "label": "福島9R",
+        "bankroll": 146027
+      },
+      {
+        "label": "福島10R",
+        "bankroll": 145510
+      },
+      {
+        "label": "福島11R",
+        "bankroll": 147554
+      },
+      {
+        "label": "福島12R",
+        "bankroll": 147019
+      },
+      {
+        "label": "小倉9R",
+        "bankroll": 146420
+      },
+      {
+        "label": "小倉10R",
+        "bankroll": 146057
+      },
+      {
+        "label": "小倉11R",
+        "bankroll": 146612
+      },
+      {
+        "label": "小倉12R",
+        "bankroll": 146430
+      }
+    ],
+    "ledger": [
+      {
+        "race": "福島9R 松島特別",
+        "stake": 741,
+        "return": 2647,
+        "profit": 1906,
+        "bankroll": 101906,
+        "bets": [
+          {
+            "bet_type": "馬連",
+            "selection": "8 - 1",
+            "stake_yen": 150,
+            "return_yen": 1320,
+            "profit_yen": 1170,
+            "hit": true
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "1 レミージュ",
+            "stake_yen": 51,
+            "return_yen": 627,
+            "profit_yen": 576,
+            "hit": true
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "8 - 1",
+            "stake_yen": 150,
+            "return_yen": 480,
+            "profit_yen": 330,
+            "hit": true
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "8 - 5",
+            "stake_yen": 116,
+            "return_yen": 0,
+            "profit_yen": -116,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "8 - 5",
+            "stake_yen": 74,
+            "return_yen": 0,
+            "profit_yen": -74,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "8 ユキワリザクラ",
+            "stake_yen": 200,
+            "return_yen": 220,
+            "profit_yen": 20,
+            "hit": true
+          }
+        ]
+      },
+      {
+        "race": "福島10R いわき特別",
+        "stake": 634,
+        "return": 1479,
+        "profit": 845,
+        "bankroll": 102751,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 6,13 - 相手 12,1,10",
+            "stake_yen": 135,
+            "return_yen": 558,
+            "profit_yen": 423,
+            "hit": true
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "12 タナサンブラック",
+            "stake_yen": 27,
+            "return_yen": 0,
+            "profit_yen": -27,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "6 クラウンシエンタ",
+            "stake_yen": 80,
+            "return_yen": 0,
+            "profit_yen": -80,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "6 クラウンシエンタ",
+            "stake_yen": 200,
+            "return_yen": 320,
+            "profit_yen": 120,
+            "hit": true
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "6 - 13",
+            "stake_yen": 93,
+            "return_yen": 363,
+            "profit_yen": 270,
+            "hit": true
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "6 - 13",
+            "stake_yen": 99,
+            "return_yen": 238,
+            "profit_yen": 139,
+            "hit": true
+          }
+        ]
+      },
+      {
+        "race": "福島11R バーデンバーデンC",
+        "stake": 535,
+        "return": 1354,
+        "profit": 819,
+        "bankroll": 103570,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 1,15 - 相手 4,6,11",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "1 - 15",
+            "stake_yen": 77,
+            "return_yen": 416,
+            "profit_yen": 339,
+            "hit": true
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "1 - 15",
+            "stake_yen": 70,
+            "return_yen": 735,
+            "profit_yen": 665,
+            "hit": true
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "1 - 4",
+            "stake_yen": 59,
+            "return_yen": 0,
+            "profit_yen": -59,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "1 - 4",
+            "stake_yen": 49,
+            "return_yen": 0,
+            "profit_yen": -49,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "1 アンゴラブラック",
+            "stake_yen": 145,
+            "return_yen": 203,
+            "profit_yen": 58,
+            "hit": true
+          }
+        ]
+      },
+      {
+        "race": "福島12R 3歳以上1勝クラス",
+        "stake": 672,
+        "return": 0,
+        "profit": -672,
+        "bankroll": 102898,
+        "bets": [
+          {
+            "bet_type": "単勝",
+            "selection": "9 ミダース",
+            "stake_yen": 56,
+            "return_yen": 0,
+            "profit_yen": -56,
+            "hit": false
+          },
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 9,5 - 相手 6,3,14",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "9 ミダース",
+            "stake_yen": 167,
+            "return_yen": 0,
+            "profit_yen": -167,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "9 - 5",
+            "stake_yen": 110,
+            "return_yen": 0,
+            "profit_yen": -110,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "9 - 6",
+            "stake_yen": 108,
+            "return_yen": 0,
+            "profit_yen": -108,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "9 - 5",
+            "stake_yen": 96,
+            "return_yen": 0,
+            "profit_yen": -96,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "小倉9R 八代特別",
+        "stake": 570,
+        "return": 0,
+        "profit": -570,
+        "bankroll": 102328,
+        "bets": [
+          {
+            "bet_type": "単勝",
+            "selection": "7 ニホンピロゴルディ",
+            "stake_yen": 46,
+            "return_yen": 0,
+            "profit_yen": -46,
+            "hit": false
+          },
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 5,7 - 相手 3,8,6",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "5 ミッキーストライク",
+            "stake_yen": 50,
+            "return_yen": 0,
+            "profit_yen": -50,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "5 ミッキーストライク",
+            "stake_yen": 167,
+            "return_yen": 0,
+            "profit_yen": -167,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "5 - 7",
+            "stake_yen": 93,
+            "return_yen": 0,
+            "profit_yen": -93,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "5 - 7",
+            "stake_yen": 79,
+            "return_yen": 0,
+            "profit_yen": -79,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "小倉10R 柳川特別",
+        "stake": 770,
+        "return": 405,
+        "profit": -365,
+        "bankroll": 101963,
+        "bets": [
+          {
+            "bet_type": "ワイド",
+            "selection": "4 - 2",
+            "stake_yen": 150,
+            "return_yen": 180,
+            "profit_yen": 30,
+            "hit": true
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "4 - 2",
+            "stake_yen": 150,
+            "return_yen": 0,
+            "profit_yen": -150,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "4 - 3",
+            "stake_yen": 150,
+            "return_yen": 225,
+            "profit_yen": 75,
+            "hit": true
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "4 バレルターン",
+            "stake_yen": 118,
+            "return_yen": 0,
+            "profit_yen": -118,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "4 - 3",
+            "stake_yen": 121,
+            "return_yen": 0,
+            "profit_yen": -121,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "4 - 6",
+            "stake_yen": 81,
+            "return_yen": 0,
+            "profit_yen": -81,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "小倉11R 博多S",
+        "stake": 612,
+        "return": 0,
+        "profit": -612,
+        "bankroll": 101351,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 6,13 - 相手 2,7,9",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "13 ダブルジョーク",
+            "stake_yen": 33,
+            "return_yen": 0,
+            "profit_yen": -33,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "6 ドゥラリアル",
+            "stake_yen": 61,
+            "return_yen": 0,
+            "profit_yen": -61,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "6 ドゥラリアル",
+            "stake_yen": 193,
+            "return_yen": 0,
+            "profit_yen": -193,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "6 - 13",
+            "stake_yen": 92,
+            "return_yen": 0,
+            "profit_yen": -92,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "6 - 13",
+            "stake_yen": 98,
+            "return_yen": 0,
+            "profit_yen": -98,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "小倉12R 3歳以上1勝クラス",
+        "stake": 288,
+        "return": 28244,
+        "profit": 27956,
+        "bankroll": 129307,
+        "bets": [
+          {
+            "bet_type": "単勝",
+            "selection": "3 ウイントールキン",
+            "stake_yen": 45,
+            "return_yen": 0,
+            "profit_yen": -45,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "6 ベルタソ",
+            "stake_yen": 25,
+            "return_yen": 0,
+            "profit_yen": -25,
+            "hit": false
+          },
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 3,8 - 相手 6,9,5",
+            "stake_yen": 135,
+            "return_yen": 19004,
+            "profit_yen": 18868,
+            "hit": true
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "8 ディーエストッキー",
+            "stake_yen": 27,
+            "return_yen": 0,
+            "profit_yen": -27,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "3 - 8",
+            "stake_yen": 56,
+            "return_yen": 9240,
+            "profit_yen": 9184,
+            "hit": true
+          }
+        ]
+      },
+      {
+        "race": "函館9R 長万部特別",
+        "stake": 855,
+        "return": 1128,
+        "profit": 273,
+        "bankroll": 129580,
+        "bets": [
+          {
+            "bet_type": "単勝",
+            "selection": "7 ブルーアイドガール",
+            "stake_yen": 164,
+            "return_yen": 0,
+            "profit_yen": -164,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "7 - 1",
+            "stake_yen": 150,
+            "return_yen": 0,
+            "profit_yen": -150,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "7 - 1",
+            "stake_yen": 126,
+            "return_yen": 0,
+            "profit_yen": -126,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "7 - 6",
+            "stake_yen": 129,
+            "return_yen": 348,
+            "profit_yen": 219,
+            "hit": true
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "7 ブルーアイドガール",
+            "stake_yen": 200,
+            "return_yen": 780,
+            "profit_yen": 580,
+            "hit": true
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "7 - 6",
+            "stake_yen": 86,
+            "return_yen": 0,
+            "profit_yen": -86,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "函館10R 洞爺湖特別",
+        "stake": 557,
+        "return": 354,
+        "profit": -203,
+        "bankroll": 129377,
+        "bets": [
+          {
+            "bet_type": "ワイド",
+            "selection": "7 - 16",
+            "stake_yen": 91,
+            "return_yen": 0,
+            "profit_yen": -91,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "7 - 16",
+            "stake_yen": 83,
+            "return_yen": 0,
+            "profit_yen": -83,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "7 - 15",
+            "stake_yen": 80,
+            "return_yen": 0,
+            "profit_yen": -80,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "7 - 15",
+            "stake_yen": 71,
+            "return_yen": 0,
+            "profit_yen": -71,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "7 カネラフィーナ",
+            "stake_yen": 32,
+            "return_yen": 74,
+            "profit_yen": 42,
+            "hit": true
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "7 カネラフィーナ",
+            "stake_yen": 200,
+            "return_yen": 280,
+            "profit_yen": 80,
+            "hit": true
+          }
+        ]
+      },
+      {
+        "race": "函館11R 青函S",
+        "stake": 497,
+        "return": 17236,
+        "profit": 16739,
+        "bankroll": 146116,
+        "bets": [
+          {
+            "bet_type": "単勝",
+            "selection": "10 エーティーマクフィ",
+            "stake_yen": 73,
+            "return_yen": 1883,
+            "profit_yen": 1810,
+            "hit": true
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "10 エーティーマクフィ",
+            "stake_yen": 179,
+            "return_yen": 1020,
+            "profit_yen": 841,
+            "hit": true
+          },
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 10,16 - 相手 12,11,3",
+            "stake_yen": 135,
+            "return_yen": 12802,
+            "profit_yen": 12668,
+            "hit": true
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "10 - 16",
+            "stake_yen": 58,
+            "return_yen": 1531,
+            "profit_yen": 1473,
+            "hit": true
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "10 - 16",
+            "stake_yen": 52,
+            "return_yen": 0,
+            "profit_yen": -52,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "函館12R 3歳以上1勝クラス",
+        "stake": 490,
+        "return": 402,
+        "profit": -88,
+        "bankroll": 146028,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 7,6 - 相手 12,1,4",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "7 レッドライトニング",
+            "stake_yen": 27,
+            "return_yen": 0,
+            "profit_yen": -27,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "6 アークドール",
+            "stake_yen": 23,
+            "return_yen": 0,
+            "profit_yen": -23,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "7 - 6",
+            "stake_yen": 83,
+            "return_yen": 0,
+            "profit_yen": -83,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "7 レッドライトニング",
+            "stake_yen": 149,
+            "return_yen": 402,
+            "profit_yen": 253,
+            "hit": true
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "7 - 6",
+            "stake_yen": 73,
+            "return_yen": 0,
+            "profit_yen": -73,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "福島9R 郡山特別",
+        "stake": 627,
+        "return": 626,
+        "profit": -1,
+        "bankroll": 146027,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 3,8 - 相手 2,5,1",
+            "stake_yen": 135,
+            "return_yen": 221,
+            "profit_yen": 86,
+            "hit": true
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "3 - 8",
+            "stake_yen": 150,
+            "return_yen": 0,
+            "profit_yen": -150,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "3 - 8",
+            "stake_yen": 150,
+            "return_yen": 405,
+            "profit_yen": 255,
+            "hit": true
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "2 ディアドコス",
+            "stake_yen": 21,
+            "return_yen": 0,
+            "profit_yen": -21,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "3 - 2",
+            "stake_yen": 118,
+            "return_yen": 0,
+            "profit_yen": -118,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "3 ヴァンヴィーヴ",
+            "stake_yen": 53,
+            "return_yen": 0,
+            "profit_yen": -53,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "福島10R 鶴ヶ城S",
+        "stake": 517,
+        "return": 0,
+        "profit": -517,
+        "bankroll": 145510,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 4,13 - 相手 8,6,15",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "8 デコラシオン",
+            "stake_yen": 21,
+            "return_yen": 0,
+            "profit_yen": -21,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "4 - 13",
+            "stake_yen": 95,
+            "return_yen": 0,
+            "profit_yen": -95,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "4 - 13",
+            "stake_yen": 100,
+            "return_yen": 0,
+            "profit_yen": -100,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "4 - 8",
+            "stake_yen": 88,
+            "return_yen": 0,
+            "profit_yen": -88,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "4 - 8",
+            "stake_yen": 78,
+            "return_yen": 0,
+            "profit_yen": -78,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "福島11R ラジオNIKKEI賞",
+        "stake": 740,
+        "return": 2784,
+        "profit": 2044,
+        "bankroll": 147554,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 7,1 - 相手 14,2,6",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "7 インパクトシー",
+            "stake_yen": 85,
+            "return_yen": 0,
+            "profit_yen": -85,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "7 インパクトシー",
+            "stake_yen": 200,
+            "return_yen": 860,
+            "profit_yen": 660,
+            "hit": true
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "7 - 1",
+            "stake_yen": 121,
+            "return_yen": 0,
+            "profit_yen": -121,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "7 - 1",
+            "stake_yen": 121,
+            "return_yen": 1924,
+            "profit_yen": 1803,
+            "hit": true
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "7 - 14",
+            "stake_yen": 78,
+            "return_yen": 0,
+            "profit_yen": -78,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "福島12R 3歳以上1勝クラス",
+        "stake": 535,
+        "return": 0,
+        "profit": -535,
+        "bankroll": 147019,
+        "bets": [
+          {
+            "bet_type": "単勝",
+            "selection": "14 リコーシュペル",
+            "stake_yen": 59,
+            "return_yen": 0,
+            "profit_yen": -59,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "14 リコーシュペル",
+            "stake_yen": 155,
+            "return_yen": 0,
+            "profit_yen": -155,
+            "hit": false
+          },
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 14,4 - 相手 2,3,6",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "14 - 4",
+            "stake_yen": 92,
+            "return_yen": 0,
+            "profit_yen": -92,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "14 - 4",
+            "stake_yen": 94,
+            "return_yen": 0,
+            "profit_yen": -94,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "小倉9R 青島特別",
+        "stake": 599,
+        "return": 0,
+        "profit": -599,
+        "bankroll": 146420,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 4,5 - 相手 3,6,2",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "3 キーチパルフェ",
+            "stake_yen": 22,
+            "return_yen": 0,
+            "profit_yen": -22,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "4 - 5",
+            "stake_yen": 150,
+            "return_yen": 0,
+            "profit_yen": -150,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "4 - 5",
+            "stake_yen": 150,
+            "return_yen": 0,
+            "profit_yen": -150,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "4 スター",
+            "stake_yen": 47,
+            "return_yen": 0,
+            "profit_yen": -47,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "4 - 3",
+            "stake_yen": 95,
+            "return_yen": 0,
+            "profit_yen": -95,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "小倉10R 西部日刊スポーツ杯",
+        "stake": 363,
+        "return": 0,
+        "profit": -363,
+        "bankroll": 146057,
+        "bets": [
+          {
+            "bet_type": "単勝",
+            "selection": "12 スナークシュンソウ",
+            "stake_yen": 20,
+            "return_yen": 0,
+            "profit_yen": -20,
+            "hit": false
+          },
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 13,3 - 相手 9,2,12",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "13 グーヴェルナイユ",
+            "stake_yen": 22,
+            "return_yen": 0,
+            "profit_yen": -22,
+            "hit": false
+          },
+          {
+            "bet_type": "複勝",
+            "selection": "13 グーヴェルナイユ",
+            "stake_yen": 138,
+            "return_yen": 0,
+            "profit_yen": -138,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "13 - 3",
+            "stake_yen": 48,
+            "return_yen": 0,
+            "profit_yen": -48,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "小倉11R 佐世保S",
+        "stake": 502,
+        "return": 1057,
+        "profit": 555,
+        "bankroll": 146612,
+        "bets": [
+          {
+            "bet_type": "馬連",
+            "selection": "5 - 3",
+            "stake_yen": 150,
+            "return_yen": 0,
+            "profit_yen": -150,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "5 - 3",
+            "stake_yen": 150,
+            "return_yen": 555,
+            "profit_yen": 405,
+            "hit": true
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "3 ヤマニンアンフィル",
+            "stake_yen": 30,
+            "return_yen": 174,
+            "profit_yen": 144,
+            "hit": true
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "5 - 4",
+            "stake_yen": 82,
+            "return_yen": 328,
+            "profit_yen": 246,
+            "hit": true
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "5 レッドエヴァンス",
+            "stake_yen": 29,
+            "return_yen": 0,
+            "profit_yen": -29,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "5 - 4",
+            "stake_yen": 61,
+            "return_yen": 0,
+            "profit_yen": -61,
+            "hit": false
+          }
+        ]
+      },
+      {
+        "race": "小倉12R 3歳以上1勝クラス",
+        "stake": 585,
+        "return": 403,
+        "profit": -182,
+        "bankroll": 146430,
+        "bets": [
+          {
+            "bet_type": "3連複フォーメーション",
+            "selection": "軸 2,13 - 相手 9,4,16",
+            "stake_yen": 135,
+            "return_yen": 0,
+            "profit_yen": -135,
+            "hit": false
+          },
+          {
+            "bet_type": "単勝",
+            "selection": "9 ニューオーリンズ",
+            "stake_yen": 41,
+            "return_yen": 0,
+            "profit_yen": -41,
+            "hit": false
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "2 - 13",
+            "stake_yen": 109,
+            "return_yen": 403,
+            "profit_yen": 294,
+            "hit": true
+          },
+          {
+            "bet_type": "ワイド",
+            "selection": "2 - 9",
+            "stake_yen": 107,
+            "return_yen": 0,
+            "profit_yen": -107,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "2 - 13",
+            "stake_yen": 98,
+            "return_yen": 0,
+            "profit_yen": -98,
+            "hit": false
+          },
+          {
+            "bet_type": "馬連",
+            "selection": "2 - 9",
+            "stake_yen": 95,
+            "return_yen": 0,
+            "profit_yen": -95,
+            "hit": false
+          }
+        ]
+      }
+    ]
+  },
   "races": [
     {
       "race": {
@@ -193,6 +1453,97 @@
           "2020105789": 7,
           "2020103955": 6,
           "2020102840": 8
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                1
+              ],
+              "yen": 1230
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                1
+              ],
+              "yen": 190
+            },
+            {
+              "combo": [
+                8
+              ],
+              "yen": 110
+            },
+            {
+              "combo": [
+                3
+              ],
+              "yen": 140
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                1,
+                8
+              ],
+              "yen": 880
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                1,
+                8
+              ],
+              "yen": 320
+            },
+            {
+              "combo": [
+                1,
+                3
+              ],
+              "yen": 690
+            },
+            {
+              "combo": [
+                3,
+                8
+              ],
+              "yen": 170
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                1,
+                8
+              ],
+              "yen": 2910
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                1,
+                3,
+                8
+              ],
+              "yen": 1180
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                1,
+                8,
+                3
+              ],
+              "yen": 13690
+            }
+          ]
         }
       },
       "horses": [
@@ -740,7 +2091,14 @@
           "stake_units": 1.5,
           "expected_value": 3.94,
           "hit_prob": 0.281,
-          "rationale": "1・2着をユキワリザクラとレミージュで。中心視の2頭で組む本線"
+          "rationale": "1・2着をユキワリザクラとレミージュで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              8,
+              1
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -748,7 +2106,13 @@
           "stake_units": 0.51,
           "expected_value": 3.3,
           "hit_prob": 0.268,
-          "rationale": "想定勝率27%に対しオッズ12.3倍は過小評価。期待値3.30倍の妙味"
+          "rationale": "想定勝率27%に対しオッズ12.3倍は過小評価。期待値3.30倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              1
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -756,7 +2120,14 @@
           "stake_units": 1.5,
           "expected_value": 3.29,
           "hit_prob": 0.506,
-          "rationale": "軸ユキワリザクラから相手レミージュ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ユキワリザクラから相手レミージュ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              8,
+              1
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -764,7 +2135,14 @@
           "stake_units": 1.16,
           "expected_value": 1.88,
           "hit_prob": 0.29,
-          "rationale": "軸ユキワリザクラから相手ミスティア。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ユキワリザクラから相手ミスティア。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              8,
+              5
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -772,7 +2150,14 @@
           "stake_units": 0.74,
           "expected_value": 1.3,
           "hit_prob": 0.093,
-          "rationale": "1・2着をユキワリザクラとミスティアで。中心視の2頭で組む本線"
+          "rationale": "1・2着をユキワリザクラとミスティアで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              8,
+              5
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -780,7 +2165,13 @@
           "stake_units": 2.0,
           "expected_value": 1.05,
           "hit_prob": 0.956,
-          "rationale": "複勝率96%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率96%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              8
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎8ユキワリザクラ（想定勝率52%）。 全体は「本命サイド（信頼度高）」。 妙味なら1レミージュ（オッズ12.3倍・期待値3.30）。",
@@ -1091,6 +2482,106 @@
           "2020106549": 9,
           "2020102185": 13,
           "2019101278": 14
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                13
+              ],
+              "yen": 120
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                13
+              ],
+              "yen": 110
+            },
+            {
+              "combo": [
+                6
+              ],
+              "yen": 160
+            },
+            {
+              "combo": [
+                12
+              ],
+              "yen": 350
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                4,
+                8
+              ],
+              "yen": 310
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                6,
+                13
+              ],
+              "yen": 390
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                6,
+                13
+              ],
+              "yen": 240
+            },
+            {
+              "combo": [
+                12,
+                13
+              ],
+              "yen": 420
+            },
+            {
+              "combo": [
+                6,
+                12
+              ],
+              "yen": 1210
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                13,
+                6
+              ],
+              "yen": 410
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                6,
+                12,
+                13
+              ],
+              "yen": 1240
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                13,
+                6,
+                12
+              ],
+              "yen": 2720
+            }
+          ]
         }
       },
       "horses": [
@@ -2010,7 +3501,25 @@
           "stake_units": 1.35,
           "expected_value": 6.24,
           "hit_prob": 0.283,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              6,
+              13,
+              12
+            ],
+            [
+              6,
+              13,
+              1
+            ],
+            [
+              6,
+              13,
+              10
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -2018,7 +3527,13 @@
           "stake_units": 0.27,
           "expected_value": 5.02,
           "hit_prob": 0.131,
-          "rationale": "想定勝率13%に対しオッズ38.4倍は過小評価。期待値5.02倍の妙味"
+          "rationale": "想定勝率13%に対しオッズ38.4倍は過小評価。期待値5.02倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              12
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -2026,7 +3541,13 @@
           "stake_units": 0.8,
           "expected_value": 3.55,
           "hit_prob": 0.394,
-          "rationale": "想定勝率39%に対しオッズ9.0倍は過小評価。期待値3.55倍の妙味"
+          "rationale": "想定勝率39%に対しオッズ9.0倍は過小評価。期待値3.55倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              6
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -2034,7 +3555,13 @@
           "stake_units": 2.0,
           "expected_value": 2.07,
           "hit_prob": 0.822,
-          "rationale": "複勝率82%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率82%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              6
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -2042,7 +3569,14 @@
           "stake_units": 0.93,
           "expected_value": 1.62,
           "hit_prob": 0.116,
-          "rationale": "1・2着をクラウンシエンタとナルカミで。中心視の2頭で組む本線"
+          "rationale": "1・2着をクラウンシエンタとナルカミで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              6,
+              13
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -2050,7 +3584,14 @@
           "stake_units": 0.99,
           "expected_value": 1.61,
           "hit_prob": 0.247,
-          "rationale": "軸クラウンシエンタから相手ナルカミ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸クラウンシエンタから相手ナルカミ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              6,
+              13
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎6クラウンシエンタ（想定勝率39%）。 全体は「中穴含み（軸は堅い）」。 妙味なら10ミヤビクライ（オッズ139.6倍・期待値9.31）。",
@@ -2401,6 +3942,106 @@
           "2020103881": 16,
           "2019106527": 15,
           "2019105336": 14
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                1
+              ],
+              "yen": 260
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                1
+              ],
+              "yen": 140
+            },
+            {
+              "combo": [
+                15
+              ],
+              "yen": 250
+            },
+            {
+              "combo": [
+                10
+              ],
+              "yen": 560
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                1,
+                8
+              ],
+              "yen": 520
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                1,
+                15
+              ],
+              "yen": 1050
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                1,
+                15
+              ],
+              "yen": 540
+            },
+            {
+              "combo": [
+                1,
+                10
+              ],
+              "yen": 1640
+            },
+            {
+              "combo": [
+                10,
+                15
+              ],
+              "yen": 3490
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                1,
+                15
+              ],
+              "yen": 1610
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                1,
+                10,
+                15
+              ],
+              "yen": 9990
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                1,
+                15,
+                10
+              ],
+              "yen": 31720
+            }
+          ]
         }
       },
       "horses": [
@@ -3466,7 +5107,25 @@
           "stake_units": 1.35,
           "expected_value": 5.62,
           "hit_prob": 0.256,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              1,
+              15,
+              4
+            ],
+            [
+              1,
+              15,
+              6
+            ],
+            [
+              1,
+              15,
+              11
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -3474,7 +5133,14 @@
           "stake_units": 0.77,
           "expected_value": 1.25,
           "hit_prob": 0.192,
-          "rationale": "軸アンゴラブラックから相手アスクナイスショー。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸アンゴラブラックから相手アスクナイスショー。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              1,
+              15
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -3482,7 +5148,14 @@
           "stake_units": 0.7,
           "expected_value": 1.23,
           "hit_prob": 0.088,
-          "rationale": "1・2着をアンゴラブラックとアスクナイスショーで。中心視の2頭で組む本線"
+          "rationale": "1・2着をアンゴラブラックとアスクナイスショーで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              1,
+              15
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -3490,7 +5163,14 @@
           "stake_units": 0.59,
           "expected_value": 0.95,
           "hit_prob": 0.147,
-          "rationale": "軸アンゴラブラックから相手キュクヌス。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸アンゴラブラックから相手キュクヌス。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              1,
+              4
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -3498,7 +5178,14 @@
           "stake_units": 0.49,
           "expected_value": 0.86,
           "hit_prob": 0.061,
-          "rationale": "1・2着をアンゴラブラックとキュクヌスで。中心視の2頭で組む本線"
+          "rationale": "1・2着をアンゴラブラックとキュクヌスで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              1,
+              4
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -3506,7 +5193,13 @@
           "stake_units": 1.45,
           "expected_value": 0.64,
           "hit_prob": 0.581,
-          "rationale": "複勝率58%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率58%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              1
+            ]
+          ]
         }
       ],
       "race_comment": "◎1アンゴラブラックと◯15アスクナイスショーが拮抗（勝率22% vs 20%）。 全体は「波乱含み（混戦・妙味あり）」。 妙味なら6メジャークロニクル（オッズ66.2倍・期待値5.78）。",
@@ -3837,6 +5530,106 @@
           "2022105076": 6,
           "2022100216": 15,
           "2022100604": 13
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                11
+              ],
+              "yen": 1130
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                11
+              ],
+              "yen": 310
+            },
+            {
+              "combo": [
+                5
+              ],
+              "yen": 150
+            },
+            {
+              "combo": [
+                6
+              ],
+              "yen": 170
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                3,
+                6
+              ],
+              "yen": 1710
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                5,
+                11
+              ],
+              "yen": 2140
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                5,
+                11
+              ],
+              "yen": 1010
+            },
+            {
+              "combo": [
+                6,
+                11
+              ],
+              "yen": 1040
+            },
+            {
+              "combo": [
+                5,
+                6
+              ],
+              "yen": 350
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                11,
+                5
+              ],
+              "yen": 5560
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                5,
+                6,
+                11
+              ],
+              "yen": 3490
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                11,
+                5,
+                6
+              ],
+              "yen": 26600
+            }
+          ]
         }
       },
       "horses": [
@@ -4775,7 +6568,13 @@
           "stake_units": 0.56,
           "expected_value": 7.75,
           "hit_prob": 0.247,
-          "rationale": "想定勝率25%に対しオッズ31.3倍は過小評価。期待値7.75倍の妙味"
+          "rationale": "想定勝率25%に対しオッズ31.3倍は過小評価。期待値7.75倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              9
+            ]
+          ]
         },
         {
           "bet_type": "3連複フォーメーション",
@@ -4783,7 +6582,25 @@
           "stake_units": 1.35,
           "expected_value": 6.62,
           "hit_prob": 0.301,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              9,
+              5,
+              6
+            ],
+            [
+              9,
+              5,
+              3
+            ],
+            [
+              9,
+              5,
+              14
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -4791,7 +6608,13 @@
           "stake_units": 1.67,
           "expected_value": 5.87,
           "hit_prob": 0.669,
-          "rationale": "複勝率67%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率67%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              9
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -4799,7 +6622,14 @@
           "stake_units": 1.1,
           "expected_value": 1.79,
           "hit_prob": 0.275,
-          "rationale": "軸ミダースから相手ヘリオトロープ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ミダースから相手ヘリオトロープ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              9,
+              5
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -4807,7 +6637,14 @@
           "stake_units": 1.08,
           "expected_value": 1.76,
           "hit_prob": 0.271,
-          "rationale": "軸ミダースから相手ブルータス。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ミダースから相手ブルータス。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              9,
+              6
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -4815,7 +6652,14 @@
           "stake_units": 0.96,
           "expected_value": 1.69,
           "hit_prob": 0.12,
-          "rationale": "1・2着をミダースとヘリオトロープで。中心視の2頭で組む本線"
+          "rationale": "1・2着をミダースとヘリオトロープで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              9,
+              5
+            ]
+          ]
         }
       ],
       "race_comment": "◎9ミダースと◯5ヘリオトロープが拮抗（勝率25% vs 24%）。 全体は「波乱含み（混戦・妙味あり）」。",
@@ -5006,6 +6850,97 @@
           "2021103845": 8,
           "2022100413": 7,
           "2021105729": 4
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                4
+              ],
+              "yen": 1580
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                4
+              ],
+              "yen": 170
+            },
+            {
+              "combo": [
+                3
+              ],
+              "yen": 110
+            },
+            {
+              "combo": [
+                8
+              ],
+              "yen": 110
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                3,
+                4
+              ],
+              "yen": 1970
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                3,
+                4
+              ],
+              "yen": 370
+            },
+            {
+              "combo": [
+                4,
+                8
+              ],
+              "yen": 270
+            },
+            {
+              "combo": [
+                3,
+                8
+              ],
+              "yen": 130
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                4,
+                3
+              ],
+              "yen": 5910
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                3,
+                4,
+                8
+              ],
+              "yen": 650
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                4,
+                3,
+                8
+              ],
+              "yen": 11380
+            }
+          ]
         }
       },
       "horses": [
@@ -5535,7 +7470,13 @@
           "stake_units": 0.46,
           "expected_value": 14.43,
           "hit_prob": 0.194,
-          "rationale": "想定勝率19%に対しオッズ74.5倍は過小評価。期待値14.43倍の妙味"
+          "rationale": "想定勝率19%に対しオッズ74.5倍は過小評価。期待値14.43倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         },
         {
           "bet_type": "3連複フォーメーション",
@@ -5543,7 +7484,25 @@
           "stake_units": 1.35,
           "expected_value": 7.2,
           "hit_prob": 0.327,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              5,
+              7,
+              3
+            ],
+            [
+              5,
+              7,
+              8
+            ],
+            [
+              5,
+              7,
+              6
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -5551,7 +7510,13 @@
           "stake_units": 0.5,
           "expected_value": 3.65,
           "hit_prob": 0.255,
-          "rationale": "想定勝率26%に対しオッズ14.3倍は過小評価。期待値3.65倍の妙味"
+          "rationale": "想定勝率26%に対しオッズ14.3倍は過小評価。期待値3.65倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              5
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -5559,7 +7524,13 @@
           "stake_units": 1.67,
           "expected_value": 2.67,
           "hit_prob": 0.667,
-          "rationale": "複勝率67%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率67%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              5
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -5567,7 +7538,14 @@
           "stake_units": 0.93,
           "expected_value": 1.52,
           "hit_prob": 0.233,
-          "rationale": "軸ミッキーストライクから相手ニホンピロゴルディ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ミッキーストライクから相手ニホンピロゴルディ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              5,
+              7
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -5575,7 +7553,14 @@
           "stake_units": 0.79,
           "expected_value": 1.38,
           "hit_prob": 0.099,
-          "rationale": "1・2着をミッキーストライクとニホンピロゴルディで。中心視の2頭で組む本線"
+          "rationale": "1・2着をミッキーストライクとニホンピロゴルディで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              5,
+              7
+            ]
+          ]
         }
       ],
       "race_comment": "◎5ミッキーストライクと◯7ニホンピロゴルディが拮抗（勝率26% vs 19%）。 全体は「波乱含み（混戦・妙味あり）」。 妙味なら7ニホンピロゴルディ（オッズ74.5倍・期待値14.43）。",
@@ -5726,6 +7711,91 @@
           "2020103696": 5,
           "2019103659": 4,
           "2022110109": 6
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                3
+              ],
+              "yen": 300
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                3
+              ],
+              "yen": 120
+            },
+            {
+              "combo": [
+                2
+              ],
+              "yen": 110
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                2,
+                3
+              ],
+              "yen": 240
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                2,
+                3
+              ],
+              "yen": 110
+            },
+            {
+              "combo": [
+                3,
+                4
+              ],
+              "yen": 150
+            },
+            {
+              "combo": [
+                2,
+                4
+              ],
+              "yen": 120
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                3,
+                2
+              ],
+              "yen": 470
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                2,
+                3,
+                4
+              ],
+              "yen": 190
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                3,
+                2,
+                4
+              ],
+              "yen": 1180
+            }
+          ]
         }
       },
       "horses": [
@@ -6133,7 +8203,14 @@
           "stake_units": 1.5,
           "expected_value": 3.07,
           "hit_prob": 0.472,
-          "rationale": "軸バレルターンから相手ミッキーゴールド。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸バレルターンから相手ミッキーゴールド。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              4,
+              2
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -6141,7 +8218,14 @@
           "stake_units": 1.5,
           "expected_value": 3.04,
           "hit_prob": 0.217,
-          "rationale": "1・2着をバレルターンとミッキーゴールドで。中心視の2頭で組む本線"
+          "rationale": "1・2着をバレルターンとミッキーゴールドで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              4,
+              2
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -6149,7 +8233,14 @@
           "stake_units": 1.5,
           "expected_value": 2.59,
           "hit_prob": 0.399,
-          "rationale": "軸バレルターンから相手テレサ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸バレルターンから相手テレサ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              4,
+              3
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -6157,7 +8248,13 @@
           "stake_units": 1.18,
           "expected_value": 2.56,
           "hit_prob": 0.594,
-          "rationale": "想定勝率59%に対しオッズ4.3倍は過小評価。期待値2.56倍の妙味"
+          "rationale": "想定勝率59%に対しオッズ4.3倍は過小評価。期待値2.56倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              4
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -6165,7 +8262,14 @@
           "stake_units": 1.21,
           "expected_value": 2.12,
           "hit_prob": 0.151,
-          "rationale": "1・2着をバレルターンとテレサで。中心視の2頭で組む本線"
+          "rationale": "1・2着をバレルターンとテレサで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              4,
+              3
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -6173,7 +8277,14 @@
           "stake_units": 0.81,
           "expected_value": 1.31,
           "hit_prob": 0.202,
-          "rationale": "軸バレルターンから相手エコロスヴァル。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸バレルターンから相手エコロスヴァル。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              4,
+              6
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎4バレルターン（想定勝率59%）。 全体は「本命サイド（信頼度高）」。 妙味なら6エコロスヴァル（オッズ57.7倍・期待値3.22）。",
@@ -6524,6 +8635,106 @@
           "2019101964": 16,
           "2020110104": 7,
           "2020100053": 11
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                9
+              ],
+              "yen": 250
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                9
+              ],
+              "yen": 120
+            },
+            {
+              "combo": [
+                4
+              ],
+              "yen": 260
+            },
+            {
+              "combo": [
+                16
+              ],
+              "yen": 260
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                2,
+                5
+              ],
+              "yen": 730
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                4,
+                9
+              ],
+              "yen": 1100
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                4,
+                9
+              ],
+              "yen": 530
+            },
+            {
+              "combo": [
+                9,
+                16
+              ],
+              "yen": 490
+            },
+            {
+              "combo": [
+                4,
+                16
+              ],
+              "yen": 1440
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                9,
+                4
+              ],
+              "yen": 2000
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                4,
+                9,
+                16
+              ],
+              "yen": 3630
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                9,
+                4,
+                16
+              ],
+              "yen": 12380
+            }
+          ]
         }
       },
       "horses": [
@@ -7577,7 +9788,25 @@
           "stake_units": 1.35,
           "expected_value": 6.3,
           "hit_prob": 0.287,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              6,
+              13,
+              2
+            ],
+            [
+              6,
+              13,
+              7
+            ],
+            [
+              6,
+              13,
+              9
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -7585,7 +9814,13 @@
           "stake_units": 0.33,
           "expected_value": 4.25,
           "hit_prob": 0.166,
-          "rationale": "想定勝率17%に対しオッズ25.6倍は過小評価。期待値4.25倍の妙味"
+          "rationale": "想定勝率17%に対しオッズ25.6倍は過小評価。期待値4.25倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              13
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -7593,7 +9828,13 @@
           "stake_units": 0.61,
           "expected_value": 2.59,
           "hit_prob": 0.345,
-          "rationale": "想定勝率35%に対しオッズ7.5倍は過小評価。期待値2.59倍の妙味"
+          "rationale": "想定勝率35%に対しオッズ7.5倍は過小評価。期待値2.59倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              6
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -7601,7 +9842,13 @@
           "stake_units": 1.93,
           "expected_value": 1.62,
           "hit_prob": 0.771,
-          "rationale": "複勝率77%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率77%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              6
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -7609,7 +9856,14 @@
           "stake_units": 0.92,
           "expected_value": 1.61,
           "hit_prob": 0.115,
-          "rationale": "1・2着をドゥラリアルとダブルジョークで。中心視の2頭で組む本線"
+          "rationale": "1・2着をドゥラリアルとダブルジョークで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              6,
+              13
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -7617,7 +9871,14 @@
           "stake_units": 0.98,
           "expected_value": 1.59,
           "hit_prob": 0.245,
-          "rationale": "軸ドゥラリアルから相手ダブルジョーク。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ドゥラリアルから相手ダブルジョーク。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              6,
+              13
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎6ドゥラリアル（想定勝率35%）。 全体は「中穴含み（軸は堅い）」。 妙味なら13ダブルジョーク（オッズ25.6倍・期待値4.25）。",
@@ -7928,6 +10189,106 @@
           "2022107258": 10,
           "2021103701": 13,
           "2019100665": 9
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                9
+              ],
+              "yen": 170
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                9
+              ],
+              "yen": 130
+            },
+            {
+              "combo": [
+                8
+              ],
+              "yen": 300
+            },
+            {
+              "combo": [
+                3
+              ],
+              "yen": 2910
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                5,
+                6
+              ],
+              "yen": 390
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                8,
+                9
+              ],
+              "yen": 1010
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                8,
+                9
+              ],
+              "yen": 470
+            },
+            {
+              "combo": [
+                3,
+                9
+              ],
+              "yen": 6750
+            },
+            {
+              "combo": [
+                3,
+                8
+              ],
+              "yen": 16500
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                9,
+                8
+              ],
+              "yen": 1280
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                3,
+                8,
+                9
+              ],
+              "yen": 42230
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                9,
+                8,
+                3
+              ],
+              "yen": 86290
+            }
+          ]
         }
       },
       "horses": [
@@ -8835,7 +11196,13 @@
           "stake_units": 0.45,
           "expected_value": 34.9,
           "hit_prob": 0.183,
-          "rationale": "想定勝率18%に対しオッズ190.8倍は過小評価。期待値34.90倍の妙味"
+          "rationale": "想定勝率18%に対しオッズ190.8倍は過小評価。期待値34.90倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              3
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -8843,7 +11210,13 @@
           "stake_units": 0.25,
           "expected_value": 6.91,
           "hit_prob": 0.116,
-          "rationale": "想定勝率12%に対しオッズ59.5倍は過小評価。期待値6.91倍の妙味"
+          "rationale": "想定勝率12%に対しオッズ59.5倍は過小評価。期待値6.91倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              6
+            ]
+          ]
         },
         {
           "bet_type": "3連複フォーメーション",
@@ -8851,7 +11224,25 @@
           "stake_units": 1.35,
           "expected_value": 5.39,
           "hit_prob": 0.245,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              3,
+              8,
+              6
+            ],
+            [
+              3,
+              8,
+              9
+            ],
+            [
+              3,
+              8,
+              5
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -8859,7 +11250,13 @@
           "stake_units": 0.27,
           "expected_value": 2.61,
           "hit_prob": 0.164,
-          "rationale": "想定勝率16%に対しオッズ15.9倍は過小評価。期待値2.61倍の妙味"
+          "rationale": "想定勝率16%に対しオッズ15.9倍は過小評価。期待値2.61倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              8
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -8867,7 +11264,14 @@
           "stake_units": 0.56,
           "expected_value": 0.92,
           "hit_prob": 0.141,
-          "rationale": "軸ウイントールキンから相手ディーエストッキー。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ウイントールキンから相手ディーエストッキー。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              3,
+              8
+            ]
+          ]
         }
       ],
       "race_comment": "◎3ウイントールキンと◯8ディーエストッキーが拮抗（勝率18% vs 16%）。 全体は「波乱含み（混戦・妙味あり）」。",
@@ -9058,6 +11462,97 @@
           "2020103844": 8,
           "2021103322": 6,
           "2020100759": 7
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                3
+              ],
+              "yen": 600
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                3
+              ],
+              "yen": 300
+            },
+            {
+              "combo": [
+                7
+              ],
+              "yen": 390
+            },
+            {
+              "combo": [
+                6
+              ],
+              "yen": 180
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                3,
+                7
+              ],
+              "yen": 1260
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                3,
+                7
+              ],
+              "yen": 410
+            },
+            {
+              "combo": [
+                3,
+                6
+              ],
+              "yen": 270
+            },
+            {
+              "combo": [
+                6,
+                7
+              ],
+              "yen": 270
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                3,
+                7
+              ],
+              "yen": 3080
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                3,
+                6,
+                7
+              ],
+              "yen": 1340
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                3,
+                7,
+                6
+              ],
+              "yen": 9770
+            }
+          ]
         }
       },
       "horses": [
@@ -9611,7 +12106,13 @@
           "stake_units": 1.64,
           "expected_value": 4.68,
           "hit_prob": 0.71,
-          "rationale": "想定勝率71%に対しオッズ6.6倍は過小評価。期待値4.68倍の妙味"
+          "rationale": "想定勝率71%に対しオッズ6.6倍は過小評価。期待値4.68倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -9619,7 +12120,14 @@
           "stake_units": 1.5,
           "expected_value": 2.65,
           "hit_prob": 0.408,
-          "rationale": "軸ブルーアイドガールから相手ハリウッドメモリー。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ブルーアイドガールから相手ハリウッドメモリー。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              7,
+              1
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -9627,7 +12135,14 @@
           "stake_units": 1.26,
           "expected_value": 2.2,
           "hit_prob": 0.157,
-          "rationale": "1・2着をブルーアイドガールとハリウッドメモリーで。中心視の2頭で組む本線"
+          "rationale": "1・2着をブルーアイドガールとハリウッドメモリーで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              7,
+              1
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -9635,7 +12150,14 @@
           "stake_units": 1.29,
           "expected_value": 2.09,
           "hit_prob": 0.321,
-          "rationale": "軸ブルーアイドガールから相手アジュマン。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ブルーアイドガールから相手アジュマン。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              7,
+              6
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -9643,7 +12165,13 @@
           "stake_units": 2.0,
           "expected_value": 1.82,
           "hit_prob": 0.987,
-          "rationale": "複勝率99%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率99%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -9651,7 +12179,14 @@
           "stake_units": 0.86,
           "expected_value": 1.5,
           "hit_prob": 0.107,
-          "rationale": "1・2着をブルーアイドガールとアジュマンで。中心視の2頭で組む本線"
+          "rationale": "1・2着をブルーアイドガールとアジュマンで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              7,
+              6
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎7ブルーアイドガール（想定勝率71%）。 全体は「本命サイド（信頼度高）」。",
@@ -10002,6 +12537,106 @@
           "2021104411": 3,
           "2019103742": 14,
           "2020103168": 7
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                7
+              ],
+              "yen": 230
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                7
+              ],
+              "yen": 140
+            },
+            {
+              "combo": [
+                2
+              ],
+              "yen": 260
+            },
+            {
+              "combo": [
+                8
+              ],
+              "yen": 230
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                1,
+                4
+              ],
+              "yen": 970
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                2,
+                7
+              ],
+              "yen": 1510
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                2,
+                7
+              ],
+              "yen": 630
+            },
+            {
+              "combo": [
+                7,
+                8
+              ],
+              "yen": 470
+            },
+            {
+              "combo": [
+                2,
+                8
+              ],
+              "yen": 1130
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                7,
+                2
+              ],
+              "yen": 1950
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                2,
+                7,
+                8
+              ],
+              "yen": 3440
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                7,
+                2,
+                8
+              ],
+              "yen": 10730
+            }
+          ]
         }
       },
       "horses": [
@@ -11085,7 +13720,14 @@
           "stake_units": 0.91,
           "expected_value": 1.47,
           "hit_prob": 0.227,
-          "rationale": "軸カネラフィーナから相手マイネルフランツ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸カネラフィーナから相手マイネルフランツ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              7,
+              16
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -11093,7 +13735,14 @@
           "stake_units": 0.83,
           "expected_value": 1.45,
           "hit_prob": 0.104,
-          "rationale": "1・2着をカネラフィーナとマイネルフランツで。中心視の2頭で組む本線"
+          "rationale": "1・2着をカネラフィーナとマイネルフランツで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              7,
+              16
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -11101,7 +13750,14 @@
           "stake_units": 0.8,
           "expected_value": 1.3,
           "hit_prob": 0.199,
-          "rationale": "軸カネラフィーナから相手マイノワール。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸カネラフィーナから相手マイノワール。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              7,
+              15
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -11109,7 +13765,14 @@
           "stake_units": 0.71,
           "expected_value": 1.24,
           "hit_prob": 0.089,
-          "rationale": "1・2着をカネラフィーナとマイノワールで。中心視の2頭で組む本線"
+          "rationale": "1・2着をカネラフィーナとマイノワールで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              7,
+              15
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -11117,7 +13780,13 @@
           "stake_units": 0.32,
           "expected_value": 1.17,
           "hit_prob": 0.507,
-          "rationale": "想定勝率51%に対しオッズ2.3倍は過小評価。期待値1.17倍の妙味"
+          "rationale": "想定勝率51%に対しオッズ2.3倍は過小評価。期待値1.17倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -11125,7 +13794,13 @@
           "stake_units": 2.0,
           "expected_value": 0.99,
           "hit_prob": 0.903,
-          "rationale": "複勝率90%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率90%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎7カネラフィーナ（想定勝率51%）。 全体は「本命サイド（信頼度高）」。 妙味なら10デルマグレムリン（オッズ293.9倍・期待値5.08）。",
@@ -11476,6 +14151,106 @@
           "2021105122": 15,
           "2021104955": 7,
           "2019100751": 11
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                10
+              ],
+              "yen": 2580
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                10
+              ],
+              "yen": 570
+            },
+            {
+              "combo": [
+                12
+              ],
+              "yen": 370
+            },
+            {
+              "combo": [
+                16
+              ],
+              "yen": 170
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                5,
+                6
+              ],
+              "yen": 9710
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                10,
+                12
+              ],
+              "yen": 16280
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                10,
+                12
+              ],
+              "yen": 4080
+            },
+            {
+              "combo": [
+                10,
+                16
+              ],
+              "yen": 2640
+            },
+            {
+              "combo": [
+                12,
+                16
+              ],
+              "yen": 1110
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                10,
+                12
+              ],
+              "yen": 33630
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                10,
+                12,
+                16
+              ],
+              "yen": 28450
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                10,
+                12,
+                16
+              ],
+              "yen": 241040
+            }
+          ]
         }
       },
       "horses": [
@@ -12481,7 +15256,13 @@
           "stake_units": 0.73,
           "expected_value": 8.29,
           "hit_prob": 0.321,
-          "rationale": "想定勝率32%に対しオッズ25.8倍は過小評価。期待値8.29倍の妙味"
+          "rationale": "想定勝率32%に対しオッズ25.8倍は過小評価。期待値8.29倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              10
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -12489,7 +15270,13 @@
           "stake_units": 1.79,
           "expected_value": 5.19,
           "hit_prob": 0.718,
-          "rationale": "複勝率72%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率72%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              10
+            ]
+          ]
         },
         {
           "bet_type": "3連複フォーメーション",
@@ -12497,7 +15284,25 @@
           "stake_units": 1.35,
           "expected_value": 4.87,
           "hit_prob": 0.221,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              10,
+              16,
+              12
+            ],
+            [
+              10,
+              16,
+              11
+            ],
+            [
+              10,
+              16,
+              3
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -12505,7 +15310,14 @@
           "stake_units": 0.58,
           "expected_value": 0.94,
           "hit_prob": 0.145,
-          "rationale": "軸エーティーマクフィから相手ペアポルックス。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸エーティーマクフィから相手ペアポルックス。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              10,
+              16
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -12513,7 +15325,14 @@
           "stake_units": 0.52,
           "expected_value": 0.92,
           "hit_prob": 0.066,
-          "rationale": "1・2着をエーティーマクフィとペアポルックスで。中心視の2頭で組む本線"
+          "rationale": "1・2着をエーティーマクフィとペアポルックスで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              10,
+              16
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎10エーティーマクフィ（想定勝率32%）。 全体は「中穴含み（軸は堅い）」。",
@@ -12824,6 +15643,106 @@
           "2022101783": 10,
           "2022110134": 6,
           "2022100076": 13
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                12
+              ],
+              "yen": 800
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                12
+              ],
+              "yen": 320
+            },
+            {
+              "combo": [
+                7
+              ],
+              "yen": 270
+            },
+            {
+              "combo": [
+                4
+              ],
+              "yen": 290
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                5,
+                7
+              ],
+              "yen": 1460
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                7,
+                12
+              ],
+              "yen": 2450
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                7,
+                12
+              ],
+              "yen": 850
+            },
+            {
+              "combo": [
+                4,
+                12
+              ],
+              "yen": 1790
+            },
+            {
+              "combo": [
+                4,
+                7
+              ],
+              "yen": 1340
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                12,
+                7
+              ],
+              "yen": 4190
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                4,
+                7,
+                12
+              ],
+              "yen": 10310
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                12,
+                7,
+                4
+              ],
+              "yen": 45000
+            }
+          ]
         }
       },
       "horses": [
@@ -13743,7 +16662,25 @@
           "stake_units": 1.35,
           "expected_value": 6.01,
           "hit_prob": 0.273,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              7,
+              6,
+              12
+            ],
+            [
+              7,
+              6,
+              1
+            ],
+            [
+              7,
+              6,
+              4
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -13751,7 +16688,13 @@
           "stake_units": 0.27,
           "expected_value": 1.74,
           "hit_prob": 0.223,
-          "rationale": "想定勝率22%に対しオッズ7.8倍は過小評価。期待値1.74倍の妙味"
+          "rationale": "想定勝率22%に対しオッズ7.8倍は過小評価。期待値1.74倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -13759,7 +16702,13 @@
           "stake_units": 0.23,
           "expected_value": 1.64,
           "hit_prob": 0.205,
-          "rationale": "想定勝率21%に対しオッズ8.0倍は過小評価。期待値1.64倍の妙味"
+          "rationale": "想定勝率21%に対しオッズ8.0倍は過小評価。期待値1.64倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              6
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -13767,7 +16716,14 @@
           "stake_units": 0.83,
           "expected_value": 1.35,
           "hit_prob": 0.208,
-          "rationale": "軸レッドライトニングから相手アークドール。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸レッドライトニングから相手アークドール。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              7,
+              6
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -13775,7 +16731,13 @@
           "stake_units": 1.49,
           "expected_value": 1.3,
           "hit_prob": 0.595,
-          "rationale": "複勝率59%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率59%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -13783,7 +16745,14 @@
           "stake_units": 0.73,
           "expected_value": 1.28,
           "hit_prob": 0.092,
-          "rationale": "1・2着をレッドライトニングとアークドールで。中心視の2頭で組む本線"
+          "rationale": "1・2着をレッドライトニングとアークドールで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              7,
+              6
+            ]
+          ]
         }
       ],
       "race_comment": "◎7レッドライトニングと◯6アークドールが拮抗（勝率22% vs 21%）。 全体は「波乱含み（混戦・妙味あり）」。 妙味なら13ブルーゴールド（オッズ179.3倍・期待値7.62）。",
@@ -14034,6 +17003,106 @@
           "2020102784": 11,
           "2021105150": 9,
           "2020102298": 8
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                1
+              ],
+              "yen": 180
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                1
+              ],
+              "yen": 110
+            },
+            {
+              "combo": [
+                3
+              ],
+              "yen": 120
+            },
+            {
+              "combo": [
+                8
+              ],
+              "yen": 120
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                1,
+                3
+              ],
+              "yen": 500
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                1,
+                3
+              ],
+              "yen": 510
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                1,
+                3
+              ],
+              "yen": 190
+            },
+            {
+              "combo": [
+                1,
+                8
+              ],
+              "yen": 180
+            },
+            {
+              "combo": [
+                3,
+                8
+              ],
+              "yen": 270
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                1,
+                3
+              ],
+              "yen": 660
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                1,
+                3,
+                8
+              ],
+              "yen": 490
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                1,
+                3,
+                8
+              ],
+              "yen": 1550
+            }
+          ]
         }
       },
       "horses": [
@@ -14758,7 +17827,25 @@
           "stake_units": 1.35,
           "expected_value": 7.73,
           "hit_prob": 0.351,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              3,
+              8,
+              2
+            ],
+            [
+              3,
+              8,
+              5
+            ],
+            [
+              3,
+              8,
+              1
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -14766,7 +17853,14 @@
           "stake_units": 1.5,
           "expected_value": 3.34,
           "hit_prob": 0.239,
-          "rationale": "1・2着をヴァンヴィーヴとソルレースで。中心視の2頭で組む本線"
+          "rationale": "1・2着をヴァンヴィーヴとソルレースで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              3,
+              8
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -14774,7 +17868,14 @@
           "stake_units": 1.5,
           "expected_value": 2.92,
           "hit_prob": 0.45,
-          "rationale": "軸ヴァンヴィーヴから相手ソルレース。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ヴァンヴィーヴから相手ソルレース。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              3,
+              8
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -14782,7 +17883,13 @@
           "stake_units": 0.21,
           "expected_value": 2.37,
           "hit_prob": 0.14,
-          "rationale": "想定勝率14%に対しオッズ17.0倍は過小評価。期待値2.37倍の妙味"
+          "rationale": "想定勝率14%に対しオッズ17.0倍は過小評価。期待値2.37倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              2
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -14790,7 +17897,14 @@
           "stake_units": 1.18,
           "expected_value": 1.92,
           "hit_prob": 0.295,
-          "rationale": "軸ヴァンヴィーヴから相手ディアドコス。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ヴァンヴィーヴから相手ディアドコス。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              3,
+              2
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -14798,7 +17912,13 @@
           "stake_units": 0.53,
           "expected_value": 1.91,
           "hit_prob": 0.361,
-          "rationale": "想定勝率36%に対しオッズ5.3倍は過小評価。期待値1.91倍の妙味"
+          "rationale": "想定勝率36%に対しオッズ5.3倍は過小評価。期待値1.91倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              3
+            ]
+          ]
         }
       ],
       "race_comment": "◎3ヴァンヴィーヴと◯8ソルレースが拮抗（勝率36% vs 33%）。 全体は「中穴含み（軸は堅い）」。 妙味なら2ディアドコス（オッズ17.0倍・期待値2.37）。",
@@ -15129,6 +18249,106 @@
           "2020105552": 7,
           "2020103033": 9,
           "2020106552": 15
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                13
+              ],
+              "yen": 240
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                13
+              ],
+              "yen": 140
+            },
+            {
+              "combo": [
+                14
+              ],
+              "yen": 360
+            },
+            {
+              "combo": [
+                8
+              ],
+              "yen": 290
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                7,
+                8
+              ],
+              "yen": 660
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                13,
+                14
+              ],
+              "yen": 1730
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                13,
+                14
+              ],
+              "yen": 720
+            },
+            {
+              "combo": [
+                8,
+                13
+              ],
+              "yen": 630
+            },
+            {
+              "combo": [
+                8,
+                14
+              ],
+              "yen": 2890
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                13,
+                14
+              ],
+              "yen": 2640
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                8,
+                13,
+                14
+              ],
+              "yen": 5650
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                13,
+                14,
+                8
+              ],
+              "yen": 18760
+            }
+          ]
         }
       },
       "horses": [
@@ -16157,7 +19377,25 @@
           "stake_units": 1.35,
           "expected_value": 5.95,
           "hit_prob": 0.27,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              4,
+              13,
+              8
+            ],
+            [
+              4,
+              13,
+              6
+            ],
+            [
+              4,
+              13,
+              15
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -16165,7 +19403,13 @@
           "stake_units": 0.21,
           "expected_value": 1.87,
           "hit_prob": 0.164,
-          "rationale": "想定勝率16%に対しオッズ11.4倍は過小評価。期待値1.87倍の妙味"
+          "rationale": "想定勝率16%に対しオッズ11.4倍は過小評価。期待値1.87倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              8
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -16173,7 +19417,14 @@
           "stake_units": 0.95,
           "expected_value": 1.65,
           "hit_prob": 0.118,
-          "rationale": "1・2着をハギノサステナブルとジャスパーロブストで。中心視の2頭で組む本線"
+          "rationale": "1・2着をハギノサステナブルとジャスパーロブストで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              4,
+              13
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -16181,7 +19432,14 @@
           "stake_units": 1.0,
           "expected_value": 1.63,
           "hit_prob": 0.251,
-          "rationale": "軸ハギノサステナブルから相手ジャスパーロブスト。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ハギノサステナブルから相手ジャスパーロブスト。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              4,
+              13
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -16189,7 +19447,14 @@
           "stake_units": 0.88,
           "expected_value": 1.43,
           "hit_prob": 0.22,
-          "rationale": "軸ハギノサステナブルから相手デコラシオン。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ハギノサステナブルから相手デコラシオン。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              4,
+              8
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -16197,7 +19462,14 @@
           "stake_units": 0.78,
           "expected_value": 1.37,
           "hit_prob": 0.098,
-          "rationale": "1・2着をハギノサステナブルとデコラシオンで。中心視の2頭で組む本線"
+          "rationale": "1・2着をハギノサステナブルとデコラシオンで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              4,
+              8
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎4ハギノサステナブル（想定勝率30%）。 全体は「中穴含み（軸は堅い）」。 妙味なら1エスティメート（オッズ192.6倍・期待値3.70）。",
@@ -16508,6 +19780,106 @@
           "2022104533": 14,
           "2022102738": 12,
           "2022104097": 13
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                1
+              ],
+              "yen": 760
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                1
+              ],
+              "yen": 280
+            },
+            {
+              "combo": [
+                5
+              ],
+              "yen": 200
+            },
+            {
+              "combo": [
+                7
+              ],
+              "yen": 430
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                1,
+                4
+              ],
+              "yen": 1760
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                1,
+                5
+              ],
+              "yen": 2700
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                1,
+                5
+              ],
+              "yen": 920
+            },
+            {
+              "combo": [
+                1,
+                7
+              ],
+              "yen": 1590
+            },
+            {
+              "combo": [
+                5,
+                7
+              ],
+              "yen": 1480
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                1,
+                5
+              ],
+              "yen": 5510
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                1,
+                5,
+                7
+              ],
+              "yen": 10520
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                1,
+                5,
+                7
+              ],
+              "yen": 55480
+            }
+          ]
         }
       },
       "horses": [
@@ -17385,7 +20757,25 @@
           "stake_units": 1.35,
           "expected_value": 6.03,
           "hit_prob": 0.274,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              7,
+              1,
+              14
+            ],
+            [
+              7,
+              1,
+              2
+            ],
+            [
+              7,
+              1,
+              6
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -17393,7 +20783,13 @@
           "stake_units": 0.85,
           "expected_value": 5.39,
           "hit_prob": 0.385,
-          "rationale": "想定勝率39%に対しオッズ14.0倍は過小評価。期待値5.39倍の妙味"
+          "rationale": "想定勝率39%に対しオッズ14.0倍は過小評価。期待値5.39倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -17401,7 +20797,13 @@
           "stake_units": 2.0,
           "expected_value": 3.21,
           "hit_prob": 0.818,
-          "rationale": "複勝率82%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率82%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              7
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -17409,7 +20811,14 @@
           "stake_units": 1.21,
           "expected_value": 2.11,
           "hit_prob": 0.151,
-          "rationale": "1・2着をインパクトシーとエキサイトバイオで。中心視の2頭で組む本線"
+          "rationale": "1・2着をインパクトシーとエキサイトバイオで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              7,
+              1
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -17417,7 +20826,14 @@
           "stake_units": 1.21,
           "expected_value": 1.96,
           "hit_prob": 0.302,
-          "rationale": "軸インパクトシーから相手エキサイトバイオ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸インパクトシーから相手エキサイトバイオ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              7,
+              1
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -17425,7 +20841,14 @@
           "stake_units": 0.78,
           "expected_value": 1.26,
           "hit_prob": 0.194,
-          "rationale": "軸インパクトシーから相手ショウナンマクベス。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸インパクトシーから相手ショウナンマクベス。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              7,
+              14
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎7インパクトシー（想定勝率39%）。 全体は「中穴含み（軸は堅い）」。",
@@ -17733,6 +21156,106 @@
           "2020102767": 2,
           "2022106648": 3,
           "2022102243": 12
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                4
+              ],
+              "yen": 380
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                4
+              ],
+              "yen": 180
+            },
+            {
+              "combo": [
+                13
+              ],
+              "yen": 3390
+            },
+            {
+              "combo": [
+                8
+              ],
+              "yen": 400
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                3,
+                8
+              ],
+              "yen": 8270
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                4,
+                13
+              ],
+              "yen": 57200
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                4,
+                13
+              ],
+              "yen": 14650
+            },
+            {
+              "combo": [
+                4,
+                8
+              ],
+              "yen": 1280
+            },
+            {
+              "combo": [
+                8,
+                13
+              ],
+              "yen": 22830
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                4,
+                13
+              ],
+              "yen": 54130
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                4,
+                8,
+                13
+              ],
+              "yen": 142380
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                4,
+                13,
+                8
+              ],
+              "yen": 984550
+            }
+          ]
         }
       },
       "horses": [
@@ -18670,7 +22193,13 @@
           "stake_units": 0.59,
           "expected_value": 36.76,
           "hit_prob": 0.241,
-          "rationale": "想定勝率24%に対しオッズ152.4倍は過小評価。期待値36.76倍の妙味"
+          "rationale": "想定勝率24%に対しオッズ152.4倍は過小評価。期待値36.76倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              14
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -18678,7 +22207,13 @@
           "stake_units": 1.55,
           "expected_value": 26.41,
           "hit_prob": 0.619,
-          "rationale": "複勝率62%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率62%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              14
+            ]
+          ]
         },
         {
           "bet_type": "3連複フォーメーション",
@@ -18686,7 +22221,25 @@
           "stake_units": 1.35,
           "expected_value": 5.26,
           "hit_prob": 0.239,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              14,
+              4,
+              2
+            ],
+            [
+              14,
+              4,
+              3
+            ],
+            [
+              14,
+              4,
+              6
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -18694,7 +22247,14 @@
           "stake_units": 0.92,
           "expected_value": 1.61,
           "hit_prob": 0.115,
-          "rationale": "1・2着をリコーシュペルとアタリダイキチで。中心視の2頭で組む本線"
+          "rationale": "1・2着をリコーシュペルとアタリダイキチで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              14,
+              4
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -18702,7 +22262,14 @@
           "stake_units": 0.94,
           "expected_value": 1.53,
           "hit_prob": 0.236,
-          "rationale": "軸リコーシュペルから相手アタリダイキチ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸リコーシュペルから相手アタリダイキチ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              14,
+              4
+            ]
+          ]
         }
       ],
       "race_comment": "◎14リコーシュペルと◯4アタリダイキチが拮抗（勝率24% vs 24%）。 全体は「波乱含み（混戦・妙味あり）」。",
@@ -18893,6 +22460,97 @@
           "2022105422": 5,
           "2022105051": 7,
           "2021101193": 8
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                6
+              ],
+              "yen": 410
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                6
+              ],
+              "yen": 140
+            },
+            {
+              "combo": [
+                1
+              ],
+              "yen": 110
+            },
+            {
+              "combo": [
+                4
+              ],
+              "yen": 160
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                1,
+                6
+              ],
+              "yen": 600
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                1,
+                6
+              ],
+              "yen": 240
+            },
+            {
+              "combo": [
+                4,
+                6
+              ],
+              "yen": 460
+            },
+            {
+              "combo": [
+                1,
+                4
+              ],
+              "yen": 320
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                6,
+                1
+              ],
+              "yen": 1240
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                1,
+                4,
+                6
+              ],
+              "yen": 1150
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                6,
+                1,
+                4
+              ],
+              "yen": 5430
+            }
+          ]
         }
       },
       "horses": [
@@ -19434,7 +23092,25 @@
           "stake_units": 1.35,
           "expected_value": 7.33,
           "hit_prob": 0.333,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              4,
+              5,
+              3
+            ],
+            [
+              4,
+              5,
+              6
+            ],
+            [
+              4,
+              5,
+              2
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -19442,7 +23118,13 @@
           "stake_units": 0.22,
           "expected_value": 3.16,
           "hit_prob": 0.125,
-          "rationale": "想定勝率12%に対しオッズ25.3倍は過小評価。期待値3.16倍の妙味"
+          "rationale": "想定勝率12%に対しオッズ25.3倍は過小評価。期待値3.16倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              3
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -19450,7 +23132,14 @@
           "stake_units": 1.5,
           "expected_value": 2.86,
           "hit_prob": 0.205,
-          "rationale": "1・2着をスターとスライビングロードで。中心視の2頭で組む本線"
+          "rationale": "1・2着をスターとスライビングロードで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              4,
+              5
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -19458,7 +23147,14 @@
           "stake_units": 1.5,
           "expected_value": 2.58,
           "hit_prob": 0.396,
-          "rationale": "軸スターから相手スライビングロード。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸スターから相手スライビングロード。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              4,
+              5
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -19466,7 +23162,13 @@
           "stake_units": 0.47,
           "expected_value": 1.78,
           "hit_prob": 0.348,
-          "rationale": "想定勝率35%に対しオッズ5.1倍は過小評価。期待値1.78倍の妙味"
+          "rationale": "想定勝率35%に対しオッズ5.1倍は過小評価。期待値1.78倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              4
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -19474,7 +23176,14 @@
           "stake_units": 0.95,
           "expected_value": 1.54,
           "hit_prob": 0.237,
-          "rationale": "軸スターから相手キーチパルフェ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸スターから相手キーチパルフェ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              4,
+              3
+            ]
+          ]
         }
       ],
       "race_comment": "◎4スターと◯5スライビングロードが拮抗（勝率35% vs 29%）。 全体は「中穴含み（軸は堅い）」。 妙味なら7ウフフトルンナ（オッズ184.3倍・期待値5.18）。",
@@ -19807,6 +23516,106 @@
           "2020104306": 14,
           "2021105221": 2,
           "2021103819": 8
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                11
+              ],
+              "yen": 1050
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                11
+              ],
+              "yen": 290
+            },
+            {
+              "combo": [
+                10
+              ],
+              "yen": 270
+            },
+            {
+              "combo": [
+                9
+              ],
+              "yen": 140
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                6,
+                6
+              ],
+              "yen": 5430
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                10,
+                11
+              ],
+              "yen": 5420
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                10,
+                11
+              ],
+              "yen": 1550
+            },
+            {
+              "combo": [
+                9,
+                11
+              ],
+              "yen": 640
+            },
+            {
+              "combo": [
+                9,
+                10
+              ],
+              "yen": 590
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                11,
+                10
+              ],
+              "yen": 13400
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                9,
+                10,
+                11
+              ],
+              "yen": 4420
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                11,
+                10,
+                9
+              ],
+              "yen": 41440
+            }
+          ]
         }
       },
       "horses": [
@@ -20841,7 +24650,13 @@
           "stake_units": 0.2,
           "expected_value": 8.24,
           "hit_prob": 0.09,
-          "rationale": "想定勝率9%に対しオッズ91.7倍は過小評価。期待値8.24倍の妙味"
+          "rationale": "想定勝率9%に対しオッズ91.7倍は過小評価。期待値8.24倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              12
+            ]
+          ]
         },
         {
           "bet_type": "3連複フォーメーション",
@@ -20849,7 +24664,25 @@
           "stake_units": 1.35,
           "expected_value": 4.96,
           "hit_prob": 0.225,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              13,
+              3,
+              9
+            ],
+            [
+              13,
+              3,
+              2
+            ],
+            [
+              13,
+              3,
+              12
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -20857,7 +24690,13 @@
           "stake_units": 0.22,
           "expected_value": 1.55,
           "hit_prob": 0.212,
-          "rationale": "想定勝率21%に対しオッズ7.3倍は過小評価。期待値1.55倍の妙味"
+          "rationale": "想定勝率21%に対しオッズ7.3倍は過小評価。期待値1.55倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              13
+            ]
+          ]
         },
         {
           "bet_type": "複勝",
@@ -20865,7 +24704,13 @@
           "stake_units": 1.38,
           "expected_value": 1.12,
           "hit_prob": 0.55,
-          "rationale": "複勝率55%の堅軸。的中重視の安全枠"
+          "rationale": "複勝率55%の堅軸。的中重視の安全枠",
+          "pay_key": "複勝",
+          "combos": [
+            [
+              13
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -20873,7 +24718,14 @@
           "stake_units": 0.48,
           "expected_value": 0.78,
           "hit_prob": 0.121,
-          "rationale": "軸グーヴェルナイユから相手バトンインディ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸グーヴェルナイユから相手バトンインディ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              13,
+              3
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎13グーヴェルナイユ（想定勝率21%）。 全体は「波乱含み（混戦・妙味あり）」。 妙味なら12スナークシュンソウ（オッズ91.7倍・期待値8.24）。",
@@ -21164,6 +25016,106 @@
           "2020101968": 12,
           "2020102229": 6,
           "2019102786": 10
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                3
+              ],
+              "yen": 580
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                3
+              ],
+              "yen": 170
+            },
+            {
+              "combo": [
+                4
+              ],
+              "yen": 200
+            },
+            {
+              "combo": [
+                5
+              ],
+              "yen": 130
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                3,
+                4
+              ],
+              "yen": 630
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                3,
+                4
+              ],
+              "yen": 1800
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                3,
+                4
+              ],
+              "yen": 640
+            },
+            {
+              "combo": [
+                3,
+                5
+              ],
+              "yen": 370
+            },
+            {
+              "combo": [
+                4,
+                5
+              ],
+              "yen": 400
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                3,
+                4
+              ],
+              "yen": 3710
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                3,
+                4,
+                5
+              ],
+              "yen": 1520
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                3,
+                4,
+                5
+              ],
+              "yen": 9920
+            }
+          ]
         }
       },
       "horses": [
@@ -22016,7 +25968,14 @@
           "stake_units": 1.5,
           "expected_value": 3.07,
           "hit_prob": 0.219,
-          "rationale": "1・2着をレッドエヴァンスとヤマニンアンフィルで。中心視の2頭で組む本線"
+          "rationale": "1・2着をレッドエヴァンスとヤマニンアンフィルで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              5,
+              3
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -22024,7 +25983,14 @@
           "stake_units": 1.5,
           "expected_value": 2.64,
           "hit_prob": 0.405,
-          "rationale": "軸レッドエヴァンスから相手ヤマニンアンフィル。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸レッドエヴァンスから相手ヤマニンアンフィル。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              5,
+              3
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -22032,7 +25998,13 @@
           "stake_units": 0.3,
           "expected_value": 1.58,
           "hit_prob": 0.272,
-          "rationale": "想定勝率27%に対しオッズ5.8倍は過小評価。期待値1.58倍の妙味"
+          "rationale": "想定勝率27%に対しオッズ5.8倍は過小評価。期待値1.58倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              3
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -22040,7 +26012,14 @@
           "stake_units": 0.82,
           "expected_value": 1.34,
           "hit_prob": 0.206,
-          "rationale": "軸レッドエヴァンスから相手ミルテンベルク。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸レッドエヴァンスから相手ミルテンベルク。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              5,
+              4
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -22048,7 +26027,13 @@
           "stake_units": 0.29,
           "expected_value": 1.25,
           "hit_prob": 0.402,
-          "rationale": "想定勝率40%に対しオッズ3.1倍は過小評価。期待値1.25倍の妙味"
+          "rationale": "想定勝率40%に対しオッズ3.1倍は過小評価。期待値1.25倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              5
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -22056,7 +26041,14 @@
           "stake_units": 0.61,
           "expected_value": 1.08,
           "hit_prob": 0.077,
-          "rationale": "1・2着をレッドエヴァンスとミルテンベルクで。中心視の2頭で組む本線"
+          "rationale": "1・2着をレッドエヴァンスとミルテンベルクで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              5,
+              4
+            ]
+          ]
         }
       ],
       "race_comment": "本命は◎5レッドエヴァンス（想定勝率40%）。 全体は「中穴含み（軸は堅い）」。 妙味なら13ベンダバリラビア（オッズ116.8倍・期待値5.23）。",
@@ -22407,6 +26399,106 @@
           "2019100069": 6,
           "2020102959": 15,
           "2022104729": 11
+        },
+        "payouts": {
+          "単勝": [
+            {
+              "combo": [
+                5
+              ],
+              "yen": 650
+            }
+          ],
+          "複勝": [
+            {
+              "combo": [
+                5
+              ],
+              "yen": 200
+            },
+            {
+              "combo": [
+                13
+              ],
+              "yen": 180
+            },
+            {
+              "combo": [
+                2
+              ],
+              "yen": 130
+            }
+          ],
+          "枠連": [
+            {
+              "combo": [
+                3,
+                7
+              ],
+              "yen": 670
+            }
+          ],
+          "馬連": [
+            {
+              "combo": [
+                5,
+                13
+              ],
+              "yen": 2280
+            }
+          ],
+          "ワイド": [
+            {
+              "combo": [
+                5,
+                13
+              ],
+              "yen": 770
+            },
+            {
+              "combo": [
+                2,
+                5
+              ],
+              "yen": 430
+            },
+            {
+              "combo": [
+                2,
+                13
+              ],
+              "yen": 370
+            }
+          ],
+          "馬単": [
+            {
+              "combo": [
+                5,
+                13
+              ],
+              "yen": 4060
+            }
+          ],
+          "三連複": [
+            {
+              "combo": [
+                2,
+                5,
+                13
+              ],
+              "yen": 2360
+            }
+          ],
+          "三連単": [
+            {
+              "combo": [
+                5,
+                13,
+                2
+              ],
+              "yen": 14870
+            }
+          ]
         }
       },
       "horses": [
@@ -23448,7 +27540,25 @@
           "stake_units": 1.35,
           "expected_value": 6.27,
           "hit_prob": 0.285,
-          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う"
+          "rationale": "混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+          "pay_key": "三連複",
+          "combos": [
+            [
+              2,
+              13,
+              9
+            ],
+            [
+              2,
+              13,
+              4
+            ],
+            [
+              2,
+              13,
+              16
+            ]
+          ]
         },
         {
           "bet_type": "単勝",
@@ -23456,7 +27566,13 @@
           "stake_units": 0.41,
           "expected_value": 3.19,
           "hit_prob": 0.225,
-          "rationale": "想定勝率22%に対しオッズ14.2倍は過小評価。期待値3.19倍の妙味"
+          "rationale": "想定勝率22%に対しオッズ14.2倍は過小評価。期待値3.19倍の妙味",
+          "pay_key": "単勝",
+          "combos": [
+            [
+              9
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -23464,7 +27580,14 @@
           "stake_units": 1.09,
           "expected_value": 1.77,
           "hit_prob": 0.273,
-          "rationale": "軸ライノから相手タケルハーロック。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ライノから相手タケルハーロック。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              2,
+              13
+            ]
+          ]
         },
         {
           "bet_type": "ワイド",
@@ -23472,7 +27595,14 @@
           "stake_units": 1.07,
           "expected_value": 1.75,
           "hit_prob": 0.269,
-          "rationale": "軸ライノから相手ニューオーリンズ。両者馬券圏内の可能性が高い手堅い組合せ"
+          "rationale": "軸ライノから相手ニューオーリンズ。両者馬券圏内の可能性が高い手堅い組合せ",
+          "pay_key": "ワイド",
+          "combos": [
+            [
+              2,
+              9
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -23480,7 +27610,14 @@
           "stake_units": 0.98,
           "expected_value": 1.71,
           "hit_prob": 0.122,
-          "rationale": "1・2着をライノとタケルハーロックで。中心視の2頭で組む本線"
+          "rationale": "1・2着をライノとタケルハーロックで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              2,
+              13
+            ]
+          ]
         },
         {
           "bet_type": "馬連",
@@ -23488,7 +27625,14 @@
           "stake_units": 0.95,
           "expected_value": 1.66,
           "hit_prob": 0.119,
-          "rationale": "1・2着をライノとニューオーリンズで。中心視の2頭で組む本線"
+          "rationale": "1・2着をライノとニューオーリンズで。中心視の2頭で組む本線",
+          "pay_key": "馬連",
+          "combos": [
+            [
+              2,
+              9
+            ]
+          ]
         }
       ],
       "race_comment": "◎2ライノと◯13タケルハーロックが拮抗（勝率26% vs 23%）。 全体は「波乱含み（混戦・妙味あり）」。 妙味なら4ユウェンタース（オッズ246.6倍・期待値11.86）。",

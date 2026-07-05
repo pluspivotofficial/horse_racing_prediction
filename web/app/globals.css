@@ -191,3 +191,26 @@ a{color:inherit}
 .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:16px;padding-top:16px;border-top:1px solid var(--line);letter-spacing:.04em}
 .legend span{display:inline-flex;gap:6px;align-items:center}
 .dot{width:8px;height:8px;border-radius:2px;display:inline-block}
+
+
+/* ---- earnings simulation ---- */
+.simcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin:30px 0;box-shadow:var(--shadow)}
+.simcard .sh{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px 12px}
+.simcard .sh h3{font-family:var(--serif);font-size:21px;font-weight:600;margin:0;letter-spacing:.03em}
+.simcard .sh .cap{font-size:11px;color:var(--muted);letter-spacing:.06em}
+.simstats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin:18px 0}
+@media(max-width:760px){.simstats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:460px){.simstats{grid-template-columns:repeat(2,1fr)}}
+.simstat{background:var(--surface2);padding:14px 16px}
+.simstat .k{font-size:9px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.simstat .v{font-family:var(--num);font-size:22px;font-weight:600;margin-top:6px;font-variant-numeric:tabular-nums;line-height:1}
+.simstat .v.up{color:var(--turf)} .simstat .v.down{color:var(--coral)} .simstat .v.gold{color:var(--gold)}
+.equity{width:100%;height:auto;display:block;margin:10px 0 4px}
+.eqlabels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.bytype{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:18px}
+.btrow{border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--surface2)}
+.btrow .n{font-size:11px;color:var(--ink2);display:flex;justify-content:space-between;letter-spacing:.03em}
+.btrow .bar{height:3px;background:var(--line);border-radius:99px;margin:8px 0 6px;overflow:hidden}
+.btrow .bar>i{display:block;height:100%;border-radius:99px}
+.btrow .roi{font-family:var(--num);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.simnote{font-size:12px;color:var(--ink2);margin-top:16px;line-height:1.75;border-left:2px solid var(--gold-dim);padding-left:13px}

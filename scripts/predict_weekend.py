@@ -27,6 +27,7 @@ sys.path.insert(0, str(ROOT))
 
 from engine.netkeiba.client import NetkeibaClient
 from engine.pipeline import predict, weekend_race_ids, upcoming_weekend
+from engine.settlement import simulate_weekend
 from engine.models import dumps, VENUE_CODES
 
 
@@ -83,12 +84,20 @@ def main() -> None:
         if args.max and len(races_out) >= args.max:
             break
 
+    # earnings simulation: settle every recommendation against real dividends
+    simulation = simulate_weekend(races_out, unit_yen=100, bankroll0=100_000)
+
     payload = {
         "generated_for": dates,
         "race_count": len(races_out),
         "venues": sorted({r["race"]["venue"] for r in races_out}),
+        "simulation": simulation,
         "races": races_out,
     }
+    if simulation.get("n_bets"):
+        print(f"\n収支シミュレーション: {simulation['n_bets']}点 / 的中率{simulation['hit_rate']*100:.0f}% / "
+              f"投資{simulation['staked']:,}円 → 回収{simulation['returned']:,}円 "
+              f"(収支{simulation['profit']:+,}円・回収率{simulation['roi']*100:.0f}%)")
     out_dir = ROOT / "data" / "output"
     out_dir.mkdir(parents=True, exist_ok=True)
     fname = out_dir / f"weekend_{dates[0]}.json"

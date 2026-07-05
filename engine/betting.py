@@ -53,6 +53,7 @@ def recommend(race: Race, preds: list[HorsePrediction]) -> list[BetRecommendatio
                     hit_prob=round(p.win_prob, 3),
                     rationale=(f"想定勝率{p.win_prob*100:.0f}%に対しオッズ{p.odds}倍は過小評価。"
                                f"期待値{p.win_prob*p.odds:.2f}倍の妙味"),
+                    pay_key="単勝", combos=[[p.horse_no]],
                 ))
 
     # --- 2. Place safety on the anchor (複勝) --------------------------------
@@ -64,6 +65,7 @@ def recommend(race: Race, preds: list[HorsePrediction]) -> list[BetRecommendatio
             expected_value=round(anchor.place_prob * max(1.1, (anchor.odds or 3) * 0.28), 2),
             hit_prob=round(anchor.place_prob, 3),
             rationale=f"複勝率{anchor.place_prob*100:.0f}%の堅軸。的中重視の安全枠",
+            pay_key="複勝", combos=[[anchor.horse_no]],
         ))
 
     # --- 3. Wide (ワイド): anchor x next two, high hit rate ------------------
@@ -78,6 +80,7 @@ def recommend(race: Race, preds: list[HorsePrediction]) -> list[BetRecommendatio
                 expected_value=round(joint * 6.5, 2),  # typical wide payout scale
                 hit_prob=round(joint, 3),
                 rationale=f"軸{anchor.horse_name}から相手{q.horse_name}。両者馬券圏内の可能性が高い手堅い組合せ",
+                pay_key="ワイド", combos=[[anchor.horse_no, q.horse_no]],
             ))
 
     # --- 4. Quinella (馬連): anchor x value partners -------------------------
@@ -91,6 +94,7 @@ def recommend(race: Race, preds: list[HorsePrediction]) -> list[BetRecommendatio
                 expected_value=round(joint * 14, 2),
                 hit_prob=round(joint, 3),
                 rationale=f"1・2着を{anchor.horse_name}と{q.horse_name}で。中心視の2頭で組む本線",
+                pay_key="馬連", combos=[[anchor.horse_no, q.horse_no]],
             ))
 
     # --- 5. Trifecta formation (3連複) for value when race is open ----------
@@ -107,6 +111,7 @@ def recommend(race: Race, preds: list[HorsePrediction]) -> list[BetRecommendatio
             expected_value=round(hit * 22, 2),
             hit_prob=round(hit, 3),
             rationale="混戦想定。上位拮抗のため点数を絞った3連複フォーメーションで高配当を狙う",
+            pay_key="三連複", combos=[[legs[0], legs[1], o] for o in others],
         ))
 
     # rank bets: value first, then hit-rate

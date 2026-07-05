@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { FACTOR_LABELS, FACTOR_ORDER } from "@/lib/factors";
 import HorseRow from "./HorseRow";
 import Bets from "./Bets";
+import Simulation from "./Simulation";
 
 export default function Dashboard({ data, stats }) {
   const [venue, setVenue] = useState("ALL");
@@ -45,6 +46,8 @@ export default function Dashboard({ data, stats }) {
           <p>過去戦績・騎手相性・コース適性・馬場・天候まで、13のファクターをAIが多角的に分析。「なぜ買えるのか」を毎レース言語化してお届けします。</p>
           <StatGrid stats={stats} venues={data.venues} />
         </section>
+
+        <Simulation sim={data.simulation} />
 
         <div className="filters">
           {["ALL", ...(data.venues || [])].map((v) => (

@@ -85,6 +85,33 @@ def test_betting_generates_recs():
         assert b.bet_type
 
 
+def test_settlement_and_sim():
+    from engine.settlement import settle_bet, simulate_weekend
+    from engine.models import BetRecommendation
+    payouts = {"単勝": [{"combo": [5], "yen": 800}],
+               "ワイド": [{"combo": [5, 3], "yen": 600}],
+               "三連複": [{"combo": [5, 3, 8], "yen": 4200}]}
+    # hit
+    b = BetRecommendation("単勝", "5", 1.0, 1.2, 0.3, "", pay_key="単勝", combos=[[5]])
+    s = settle_bet(b, payouts, unit_yen=100)
+    assert s["stake_yen"] == 100 and s["return_yen"] == 800 and s["hit"]
+    # miss
+    b2 = BetRecommendation("単勝", "7", 1.0, 1.0, 0.1, "", pay_key="単勝", combos=[[7]])
+    assert settle_bet(b2, payouts, unit_yen=100)["return_yen"] == 0
+    # formation: one of 2 combos hits -> per-combo staking
+    bf = BetRecommendation("3連複F", "5,3-8,9", 2.0, 5.0, 0.2, "",
+                           pay_key="三連複", combos=[[5, 3, 8], [5, 3, 9]])
+    sf = settle_bet(bf, payouts, unit_yen=100)
+    assert sf["stake_yen"] == 200 and sf["return_yen"] == round(4200 / 100 * 100) and sf["hit"]
+    # weekend simulation over a serialised race
+    race = {"race": {"venue": "東京", "race_no": 11, "name": "T",
+                     "payouts": payouts},
+            "bets": [{"bet_type": "単勝", "selection": "5", "stake_units": 1.0,
+                      "pay_key": "単勝", "combos": [[5]]}]}
+    out = simulate_weekend([race], unit_yen=100, bankroll0=10000)
+    assert out["n_bets"] == 1 and out["profit"] == 700 and out["bankroll_end"] == 10700
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for fn in fns:

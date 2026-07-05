@@ -43,9 +43,11 @@ def load_race(client: NetkeibaClient, race_id: str, want_result: bool = True) ->
     # actual conditions + results (present only once a race has run)
     if want_result:
         try:
-            dbrace = P.parse_race_db(client.race_db(race_id), race_id)
+            db_html = client.race_db(race_id)
+            dbrace = P.parse_race_db(db_html, race_id)
             if dbrace.entries or dbrace.result or dbrace.name:
                 _merge_result_page(race, dbrace)
+            race.payouts = P.parse_payouts(db_html)
         except Exception:
             pass
 

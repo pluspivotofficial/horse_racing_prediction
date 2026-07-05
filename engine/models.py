@@ -126,6 +126,8 @@ class Race:
     result: dict[str, int] = field(default_factory=dict)      # horse_id -> finish
     result_odds: dict[str, float] = field(default_factory=dict)  # horse_id -> final win odds
     result_pop: dict[str, int] = field(default_factory=dict)   # horse_id -> final favourite rank
+    # actual dividends: {bet_type: [{combo:[nums], yen:int}]} (per 100 yen)
+    payouts: dict = field(default_factory=dict)
 
 
 # --- Prediction output for a single horse ----------------------------------
@@ -157,6 +159,10 @@ class BetRecommendation:
     expected_value: float          # EV multiple (1.0 = break-even)
     hit_prob: float
     rationale: str
+    # settlement structure: the horse-number combos this ticket covers,
+    # and which payout category to look them up under
+    pay_key: str = ""              # 単勝 / 複勝 / ワイド / 馬連 / 三連複
+    combos: list = field(default_factory=list)   # e.g. [[10]] or [[10,12]] or [[10,3,8],...]
 
 
 @dataclass

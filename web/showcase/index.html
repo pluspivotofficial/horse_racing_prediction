@@ -193,6 +193,29 @@ a{color:inherit}
 .legend span{display:inline-flex;gap:6px;align-items:center}
 .dot{width:8px;height:8px;border-radius:2px;display:inline-block}
 
+
+/* ---- earnings simulation ---- */
+.simcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin:30px 0;box-shadow:var(--shadow)}
+.simcard .sh{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px 12px}
+.simcard .sh h3{font-family:var(--serif);font-size:21px;font-weight:600;margin:0;letter-spacing:.03em}
+.simcard .sh .cap{font-size:11px;color:var(--muted);letter-spacing:.06em}
+.simstats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin:18px 0}
+@media(max-width:760px){.simstats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:460px){.simstats{grid-template-columns:repeat(2,1fr)}}
+.simstat{background:var(--surface2);padding:14px 16px}
+.simstat .k{font-size:9px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.simstat .v{font-family:var(--num);font-size:22px;font-weight:600;margin-top:6px;font-variant-numeric:tabular-nums;line-height:1}
+.simstat .v.up{color:var(--turf)} .simstat .v.down{color:var(--coral)} .simstat .v.gold{color:var(--gold)}
+.equity{width:100%;height:auto;display:block;margin:10px 0 4px}
+.eqlabels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.bytype{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:18px}
+.btrow{border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--surface2)}
+.btrow .n{font-size:11px;color:var(--ink2);display:flex;justify-content:space-between;letter-spacing:.03em}
+.btrow .bar{height:3px;background:var(--line);border-radius:99px;margin:8px 0 6px;overflow:hidden}
+.btrow .bar>i{display:block;height:100%;border-radius:99px}
+.btrow .roi{font-family:var(--num);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.simnote{font-size:12px;color:var(--ink2);margin-top:16px;line-height:1.75;border-left:2px solid var(--gold-dim);padding-left:13px}
+
 </style>
 
 <div class="topbar"><div class="wrap">
@@ -208,6 +231,8 @@ a{color:inherit}
     <p>過去戦績・騎手相性・コース適性・馬場・天候まで、13のファクターをAIが多角的に分析。「なぜ買えるのか」を毎レース言語化してお届けします。</p>
     <div class="statgrid" id="statGrid"></div>
   </section>
+
+  <section id="sim"></section>
 
   <div class="filters" id="venueFilter"></div>
   <div class="section-t">レースを選ぶ</div>
@@ -400,5 +425,57 @@ function renderFoot(){
 document.getElementById('themeBtn').onclick=()=>{
   const r=document.documentElement; r.dataset.theme = r.dataset.theme==='light'?'':'light';};
 
-renderStats();renderAll();renderFoot();
+
+function money(n){return (n<0?'−':'')+'¥'+Math.abs(Math.round(n)).toLocaleString();}
+function renderSim(){
+  const s=DATA.simulation; const el=document.getElementById('sim');
+  if(!s||!s.n_bets){el.innerHTML='';return;}
+  const up=s.profit>=0;
+  const c=s.equity_curve, W=820, H=170, pad=14;
+  const ys=c.map(p=>p.bankroll).concat([s.bankroll_start]);
+  const mn=Math.min(...ys), mx=Math.max(...ys), span=(mx-mn)||1;
+  const X=i=>pad+i*(W-2*pad)/(c.length-1);
+  const Y=v=>H-pad-(v-mn)/span*(H-2*pad);
+  const line=c.map((p,i)=>`${i?'L':'M'}${X(i).toFixed(1)},${Y(p.bankroll).toFixed(1)}`).join(' ');
+  const area=`M${X(0).toFixed(1)},${(H-pad).toFixed(1)} `+c.map((p,i)=>`L${X(i).toFixed(1)},${Y(p.bankroll).toFixed(1)}`).join(' ')+` L${X(c.length-1).toFixed(1)},${(H-pad).toFixed(1)} Z`;
+  const baseY=Y(s.bankroll_start).toFixed(1);
+  const endUp=c[c.length-1].bankroll>=s.bankroll_start;
+  const stroke=endUp?'var(--turf)':'var(--coral)';
+  const svg=`<svg class="equity" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="資金推移">
+    <defs><linearGradient id="eqg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${stroke}" stop-opacity="0.20"/><stop offset="1" stop-color="${stroke}" stop-opacity="0"/></linearGradient></defs>
+    <line x1="${pad}" y1="${baseY}" x2="${W-pad}" y2="${baseY}" stroke="var(--line2)" stroke-width="1" stroke-dasharray="3 4"/>
+    <path d="${area}" fill="url(#eqg)"/>
+    <path d="${line}" fill="none" stroke="${stroke}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="${X(c.length-1).toFixed(1)}" cy="${Y(c[c.length-1].bankroll).toFixed(1)}" r="4" fill="${stroke}"/>
+  </svg>`;
+  const stat=(k,v,cls)=>`<div class="simstat"><div class="k">${k}</div><div class="v ${cls||''}">${v}</div></div>`;
+  const bt=Object.entries(s.by_type).sort((a,b)=>b[1].return-a[1].return).map(([name,v])=>{
+    const roi=v.roi*100, w=Math.max(3,Math.min(100,roi/6));
+    const col=roi>=100?'var(--turf)':roi>=60?'var(--gold)':'var(--coral)';
+    return `<div class="btrow"><div class="n"><span>${name.replace('フォーメーション','F')}</span><span>的中${v.hits}/${v.bets}</span></div>
+      <div class="bar"><i style="width:${w}%;background:${col}"></i></div>
+      <div class="n"><span class="roi" style="color:${col}">回収率 ${roi.toFixed(0)}%</span><span>${money(v.return)}</span></div></div>`;}).join('');
+  const led=[...s.ledger].sort((a,b)=>b.profit-a.profit);
+  const top2=led.slice(0,2).reduce((a,r)=>a+r.profit,0);
+  const fuku=s.by_type['複勝'];
+  const note=`※ 対象${DATA.race_count}レースを推奨どおり実際に購入した場合を、<b>実際の払戻(配当)</b>で精算した結果です（1点=${s.unit_yen}円・元手${money(s.bankroll_start)}）。`
+    +`ただし1週末のみで分散は大きく、利益${money(s.profit)}のうち${money(top2)}は${led[0].race.split(' ')[0]}等・上位2レースの的中に依存します。`
+    +(fuku?`堅実志向なら複勝中心（回収率${Math.round(fuku.roi*100)}%）が目安。`:'')+`長期の安定した回収率評価には複数週の検証が必要です。馬券は自己責任で。`;
+  el.innerHTML=`<div class="simcard">
+    <div class="sh"><h3>💴 収支シミュレーション</h3><span class="cap">推奨馬券を実配当で精算 ・ ${s.n_bets}点</span></div>
+    <div class="simstats">
+      ${stat('投資額', money(s.staked))}
+      ${stat('回収額', money(s.returned),'gold')}
+      ${stat('収支', (up?'+':'')+money(s.profit).replace('¥',''),up?'up':'down')}
+      ${stat('回収率', (s.roi*100).toFixed(0)+'%', up?'up':'down')}
+      ${stat('的中率', (s.hit_rate*100).toFixed(0)+'%')}
+    </div>
+    ${svg}
+    <div class="eqlabels"><span>元手 ${money(s.bankroll_start)}</span><span>最大ドローダウン −${money(s.max_drawdown).replace('¥','¥')} ／ 最終 ${money(s.bankroll_end)}</span></div>
+    <div class="bytype">${bt}</div>
+    <div class="simnote">${note}</div>
+  </div>`;
+}
+renderStats();renderSim();renderAll();renderFoot();
 </script>

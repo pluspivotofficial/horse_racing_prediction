@@ -276,6 +276,48 @@ def parse_race_db(html: str, race_id: str) -> Race:
 
 
 # --------------------------------------------------------------------------
+# payouts (配当 / 払戻) — for the earnings simulation
+# --------------------------------------------------------------------------
+def parse_payouts(html: str) -> dict:
+    """Actual dividends per bet type from the race result page.
+
+    Returns e.g. {"単勝":[{"combo":[10],"yen":2580}],
+                  "ワイド":[{"combo":[10,12],"yen":4080}, ...], ...}
+    Amounts are per 100 yen (netkeiba convention).
+    """
+    soup = BeautifulSoup(html, "lxml")
+    out: dict[str, list] = {}
+    for table in soup.select("table.pay_table_01"):
+        for tr in table.select("tr"):
+            th = tr.find("th")
+            tds = tr.find_all("td")
+            if not th or len(tds) < 2:
+                continue
+            bet_type = th.get_text(strip=True)
+            combos = _split_br(tds[0])
+            yens = _split_br(tds[1])
+            rows = []
+            for i, cframe in enumerate(combos):
+                nums = [int(x) for x in re.findall(r"\d+", cframe)]
+                yen = None
+                if i < len(yens):
+                    y = re.sub(r"[^\d]", "", yens[i])
+                    yen = int(y) if y else None
+                if nums and yen:
+                    rows.append({"combo": nums, "yen": yen})
+            if rows:
+                out[bet_type] = rows
+    return out
+
+
+def _split_br(td) -> list[str]:
+    """Split a <td>'s content on <br> into clean text fragments."""
+    html = td.decode_contents()
+    parts = re.split(r"<br\s*/?>", html)
+    return [re.sub(r"<[^>]+>", "", p).strip() for p in parts if re.sub(r"<[^>]+>", "", p).strip()]
+
+
+# --------------------------------------------------------------------------
 # horse career history
 # --------------------------------------------------------------------------
 def parse_horse_history(html: str, horse_id: str, limit: int = 30) -> Horse:
