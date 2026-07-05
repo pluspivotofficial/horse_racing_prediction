@@ -75,6 +75,10 @@ class Horse:
     career: str = ""               # e.g. "33戦6勝"
     record: str = ""               # e.g. "6-11-6-10" (1st-2nd-3rd-out)
     history: list[PastRun] = field(default_factory=list)
+    # ancestry: {sire, sire_id, dam, damsire, damsire_id}
+    pedigree: dict = field(default_factory=dict)
+    # sire progeny aggregates: {starts, wins, win_rate, graded_wins}
+    sire_stats: dict = field(default_factory=dict)
 
 
 # --- An entry = a horse declared to run in a specific upcoming race ---------
@@ -94,6 +98,9 @@ class Entry:
     body_weight_diff: Optional[int] = None
     odds: Optional[float] = None
     popularity: Optional[int] = None
+    # final-workout (追い切り) signal from the oikiri page
+    workout_eval: str = ""         # S / A / B / C / D evaluation letter
+    workout_comment: str = ""      # 短評 (e.g. 気配上々)
 
 
 # --- The race being predicted ----------------------------------------------

@@ -56,8 +56,23 @@ def load_race(client: NetkeibaClient, race_id: str, want_result: bool = True) ->
     if not any(e.odds for e in race.entries) and not race.result_odds:
         warnings.append("オッズ未発売のため、期待値（妙味）の算出は暫定です。")
 
+    # workout (追い切り) table for the whole race — one fetch
+    workouts: dict[str, dict] = {}
+    try:
+        workouts = P.parse_oikiri(client.oikiri(race_id))
+    except Exception:
+        pass
+    for e in race.entries:
+        w = workouts.get(e.horse_id)
+        if w:
+            e.workout_eval = w.get("eval", "")
+            e.workout_comment = w.get("comment", "")
+    if not workouts:
+        warnings.append("追い切り情報が未公開（暫定評価）。木〜金の更新で反映されます。")
+
     horses: dict[str, Horse] = {}
     thin = 0
+    _sire_cache: dict[str, dict] = {}
     for e in race.entries:
         if not e.horse_id:
             continue
@@ -66,6 +81,16 @@ def load_race(client: NetkeibaClient, race_id: str, want_result: bool = True) ->
         except Exception:
             h = Horse(horse_id=e.horse_id, name=e.horse_name)
         h.name = h.name or e.horse_name
+        # pedigree + sire progeny stats (③ 血統)
+        try:
+            h.pedigree = P.parse_pedigree(client.pedigree(e.horse_id))
+            sid = h.pedigree.get("sire_id")
+            if sid:
+                if sid not in _sire_cache:
+                    _sire_cache[sid] = P.parse_sire_stats(client.sire(sid))
+                h.sire_stats = _sire_cache[sid]
+        except Exception:
+            pass
         horses[e.horse_id] = h
         if len(h.history) < 3:
             thin += 1

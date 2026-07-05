@@ -42,7 +42,7 @@ export default function Dashboard({ data, stats }) {
       <div className="wrap">
         <section className="hero">
           <h1>今週末の勝ち馬を、<span className="grad">データで撃ち抜く。</span></h1>
-          <p>過去戦績・騎手相性・コース適性・馬場・天候まで、11のファクターをAIが多角的に分析。「なぜ買えるのか」を毎レース言語化してお届けします。</p>
+          <p>過去戦績・騎手相性・コース適性・馬場・天候まで、13のファクターをAIが多角的に分析。「なぜ買えるのか」を毎レース言語化してお届けします。</p>
           <StatGrid stats={stats} venues={data.venues} />
         </section>
 
@@ -97,7 +97,7 @@ function StatGrid({ stats, venues }) {
     cards.push(["◎の複勝的中率", stats.plcPct + "%", `本命が3着内 ${stats.plcHit}/${stats.scored}R`, "gold"]);
     cards.push(["◎の単勝的中率", stats.winPct + "%", `本命が勝利 ${stats.winHit}/${stats.scored}R`, "sky"]);
   } else {
-    cards.push(["ファクター数", "11", "多角的にスコアリング", "sky"]);
+    cards.push(["ファクター数", "13", "多角的にスコアリング", "sky"]);
   }
   if (stats.bestVal && stats.bestVal.value > 0) {
     const b = stats.bestVal;

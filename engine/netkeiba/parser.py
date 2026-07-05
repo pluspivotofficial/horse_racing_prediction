@@ -339,6 +339,102 @@ def parse_horse_history(html: str, horse_id: str, limit: int = 30) -> Horse:
     return horse
 
 
+# --------------------------------------------------------------------------
+# pedigree (blood table)
+# --------------------------------------------------------------------------
+def parse_pedigree(html: str) -> dict:
+    """Extract sire / dam / damsire from the 3-generation blood table.
+
+    Layout (verified): the two full-height cells (rowspan == max) are sire then
+    dam; the first male cell after the dam is the damsire (母父).
+    """
+    soup = BeautifulSoup(html, "lxml")
+    bt = soup.select_one("table.blood_table")
+    if not bt:
+        return {}
+    cells = []
+    for td in bt.select("td"):
+        a = td.select_one('a[href*="/horse/"]')
+        if not a:
+            continue
+        name = a.get_text(strip=True)
+        if name in ("血統", "産駒", ""):
+            continue
+        hid = re.search(r"/horse/(\w+)/", a["href"])
+        cells.append({
+            "name": re.split(r"[A-Za-z(]", name)[0] or name,  # strip romaji suffix
+            "id": hid.group(1) if hid else "",
+            "rowspan": int(td.get("rowspan", 1)),
+            "male": "b_ml" in (td.get("class") or []),
+        })
+    if not cells:
+        return {}
+    top = max(c["rowspan"] for c in cells)
+    fulls = [c for c in cells if c["rowspan"] == top]
+    sire = fulls[0] if fulls else cells[0]
+    dam = fulls[1] if len(fulls) > 1 else {}
+    damsire = {}
+    if dam:
+        di = cells.index(dam)
+        for c in cells[di + 1:]:
+            if c["male"]:
+                damsire = c
+                break
+    return {
+        "sire": sire.get("name", ""), "sire_id": sire.get("id", ""),
+        "dam": dam.get("name", ""),
+        "damsire": damsire.get("name", ""), "damsire_id": damsire.get("id", ""),
+    }
+
+
+def parse_sire_stats(html: str) -> dict:
+    """Progeny aggregates from the sire page's cumulative (累計) row."""
+    soup = BeautifulSoup(html, "lxml")
+    for tr in soup.select("table.race_table_01 tr"):
+        cells = [c.get_text(strip=True) for c in tr.find_all(["th", "td"])]
+        if cells and cells[0] in ("累計", "通算"):
+            nums = [_num(c) for c in cells]
+            # row shape: 累計, (順位), 出走頭数, 勝馬頭数, 出走回数, 勝利回数, 重賞出走, 重賞勝利
+            vals = [n for n in nums if n is not None]
+            if len(vals) >= 4:
+                starts = vals[2] if len(vals) > 2 else None
+                wins = vals[3] if len(vals) > 3 else None
+                graded = vals[5] if len(vals) > 5 else 0
+                if starts and wins is not None and starts > 0:
+                    return {"starts": int(starts), "wins": int(wins),
+                            "win_rate": round(wins / starts, 4),
+                            "graded_wins": int(graded)}
+    return {}
+
+
+# --------------------------------------------------------------------------
+# workout (追い切り / oikiri)
+# --------------------------------------------------------------------------
+def parse_oikiri(html: str) -> dict:
+    """horse_id -> {eval, comment}. Evaluation letter (S/A/B/C/D) + short note."""
+    soup = BeautifulSoup(html, "lxml")
+    out: dict[str, dict] = {}
+    for tr in soup.select("tr.HorseList"):
+        a = tr.select_one('a[href*="/horse/"]')
+        if not a:
+            continue
+        hid = re.search(r"/horse/(\d+)", a["href"])
+        if not hid:
+            continue
+        cells = [td.get_text(" ", strip=True) for td in tr.find_all("td")]
+        ev = next((c for c in reversed(cells) if re.fullmatch(r"[SABCDE]", c)), "")
+        comment = ""
+        for c in cells:
+            if c and not re.fullmatch(r"[SABCDE]", c) and re.search(r"[ぁ-んァ-ヶ一-龠]", c) \
+               and "◎" not in c and len(c) <= 12 and "前走" not in c:
+                # first short JP phrase that isn't the horse name row
+                if c != (a.get_text(strip=True)):
+                    comment = c
+                    break
+        out[hid.group(1)] = {"eval": ev, "comment": comment}
+    return out
+
+
 def _header_index(header: list[str]) -> dict:
     """Map our canonical keys to column positions by keyword matching."""
     keys = {

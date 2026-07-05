@@ -119,3 +119,18 @@ class NetkeibaClient:
     def horse_profile(self, horse_id: str, force: bool = False) -> str:
         url = f"https://db.netkeiba.com/horse/{horse_id}/"
         return self.get(url, encoding="euc-jp", force=force)
+
+    def pedigree(self, horse_id: str, force: bool = False) -> str:
+        """3-generation blood table."""
+        url = f"https://db.netkeiba.com/horse/ped/{horse_id}/"
+        return self.get(url, encoding="euc-jp", force=force)
+
+    def sire(self, sire_id: str, force: bool = False) -> str:
+        """Sire's progeny statistics page."""
+        url = f"https://db.netkeiba.com/horse/sire/{sire_id}/"
+        return self.get(url, encoding="euc-jp", force=force)
+
+    def oikiri(self, race_id: str, force: bool = False) -> str:
+        """Pre-race final-workout (追い切り) table for a race."""
+        url = f"https://race.netkeiba.com/race/oikiri.html?race_id={race_id}"
+        return self.get(url, encoding="utf-8", force=force)

@@ -278,6 +278,68 @@ def f_draw_fit(horse: Horse, race: Race, entry: Entry) -> Factor:
     return Factor("draw_fit", "枠順", max(40, min(62, score)), note, 0)
 
 
+_WK_SCORE = {"S": 70, "A": 65, "B": 55, "C": 46, "D": 40, "E": 36}
+_WK_POS = ("上々", "絶好", "抜群", "良化", "上積", "躍動", "順調", "合格", "変身", "文句", "十分", "併せ先着")
+_WK_NEG = ("平凡", "平行", "イマイチ", "物足", "一息", "案外", "重い", "消", "非力", "遅れ")
+
+
+def f_workout(horse: Horse, race: Race, entry: Entry) -> Factor:
+    """Final-workout (追い切り) evaluation letter + short note."""
+    ev = (entry.workout_eval or "").upper()
+    cm = entry.workout_comment or ""
+    if not ev and not cm:
+        return Factor("workout", "追い切り", 50, "追い切り情報は未公開（暫定評価）", 0)
+    score = _WK_SCORE.get(ev, 52)
+    if any(k in cm for k in _WK_POS):
+        score += 3
+    if any(k in cm for k in _WK_NEG):
+        score -= 4
+    score = max(38, min(72, score))
+    parts = []
+    if ev:
+        parts.append(f"追い切り評価{ev}")
+    if cm:
+        parts.append(cm)
+    tone = "動き良好" if score >= 60 else "標準" if score >= 48 else "見劣り"
+    return Factor("workout", "追い切り", score, "・".join(parts) + f"（{tone}）", 1 if ev else 0)
+
+
+def f_pedigree(horse: Horse, race: Race, entry: Entry) -> Factor:
+    """Bloodline quality (sire progeny stats), weighted up when the horse is
+    unproven at today's surface/distance — where pedigree matters most."""
+    ped = horse.pedigree or {}
+    ss = horse.sire_stats or {}
+    if not ped.get("sire"):
+        return Factor("pedigree", "血統", 50, "血統情報を取得できませんでした", 0)
+    wr = ss.get("win_rate")
+    graded = ss.get("graded_wins", 0)
+    if wr is not None:
+        quality = 46 + (wr - 0.05) * 350
+        if graded >= 20:
+            quality += 4
+        elif graded >= 8:
+            quality += 2
+        quality = max(42, min(66, quality))
+    else:
+        quality = 50
+    surf_runs = sum(1 for r in horse.history if r.surface == race.surface)
+    dist_runs = sum(1 for r in horse.history
+                    if r.distance and race.distance and abs(r.distance - race.distance) <= 200)
+    unproven = surf_runs < 2 or dist_runs < 2
+    score = quality if unproven else 50 + (quality - 50) * 0.4
+    sire = ped.get("sire", "?")
+    ds = ped.get("damsire", "")
+    wr_txt = f"産駒勝率{wr*100:.0f}%" if wr is not None else "産駒成績不明"
+    g_txt = f"・重賞{graded}勝" if graded else ""
+    note = f"父{sire}（{wr_txt}{g_txt}）"
+    if ds:
+        note += f"×母父{ds}"
+    if unproven:
+        cond = "初" + ("芝" if race.surface == "芝" else "ダート") if surf_runs < 2 else "距離替わり"
+        note += f"。{cond}だが血統的な後押しは" + ("あり" if score >= 54 else "限定的")
+    return Factor("pedigree", "血統", score, note, 1 if wr is not None else 0)
+
+
 def f_condition(horse: Horse, race: Race, entry: Entry) -> Factor:
     """Body-weight trend + days-since-last-run (rotation)."""
     notes = []
@@ -319,22 +381,25 @@ def f_condition(horse: Horse, race: Race, entry: Entry) -> Factor:
 
 FACTORS: list[Callable[[Horse, Race, Entry], Factor]] = [
     f_recent_form, f_class_fit, f_distance_fit, f_course_fit, f_surface_fit,
-    f_going_fit, f_weather_fit, f_jockey_fit, f_pace_fit, f_draw_fit, f_condition,
+    f_going_fit, f_weather_fit, f_jockey_fit, f_pace_fit, f_workout, f_pedigree,
+    f_draw_fit, f_condition,
 ]
 
-# weights sum ~1.0 — tuned so form + class + speed dominate, "相性" factors refine
+# weights sum ~1.0 — form + class dominate; workout/pedigree/相性 refine
 WEIGHTS: dict[str, float] = {
-    "recent_form": 0.22,
-    "class_fit": 0.15,
-    "distance_fit": 0.11,
-    "course_fit": 0.09,
-    "surface_fit": 0.06,
-    "going_fit": 0.07,
-    "weather_fit": 0.05,
-    "jockey_fit": 0.09,
-    "pace_fit": 0.07,
-    "draw_fit": 0.04,
-    "condition": 0.05,
+    "recent_form": 0.20,
+    "class_fit": 0.14,
+    "distance_fit": 0.10,
+    "course_fit": 0.08,
+    "surface_fit": 0.05,
+    "going_fit": 0.06,
+    "weather_fit": 0.04,
+    "jockey_fit": 0.08,
+    "pace_fit": 0.06,
+    "workout": 0.07,
+    "pedigree": 0.05,
+    "draw_fit": 0.03,
+    "condition": 0.04,
 }
 
 

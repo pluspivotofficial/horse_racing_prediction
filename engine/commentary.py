@@ -25,6 +25,8 @@ PERSONAS = {
     "data": ("📊", "データ分析官"),
     "pace": ("🐎", "展開ラボ"),
     "fit": ("🤝", "相性ウォッチャー"),
+    "workout": ("🔬", "調教アナリスト"),
+    "pedigree": ("🧬", "血統ラボ"),
     "value": ("💰", "妙味ハンター"),
     "risk": ("⚠️", "リスク番人"),
 }
@@ -56,6 +58,21 @@ def horse_comments(p: HorsePrediction) -> list[dict]:
     pace = f.get("pace_fit")
     if pace:
         out.append(_c("pace", pace.note + "。"))
+
+    # 🔬 workout — speak when there's a real evaluation (positive or negative)
+    wk = f.get("workout")
+    if wk and wk.sample:
+        if wk.score >= 60:
+            out.append(_c("workout", f"{wk.note} 上昇気配で状態は good。"))
+        elif wk.score <= 47:
+            out.append(_c("risk", f"調教面がやや不安：{wk.note}。"))
+        else:
+            out.append(_c("workout", f"{wk.note}。"))
+
+    # 🧬 pedigree — speak when it adds signal (unproven condition or strong blood)
+    pg = f.get("pedigree")
+    if pg and pg.sample and (pg.score >= 55 or pg.score <= 47 or "初" in pg.note or "替わり" in pg.note):
+        out.append(_c("pedigree", pg.note + "。"))
 
     # 🤝 compatibility — surface the best-fitting condition factor with a real edge
     fit_keys = ["jockey_fit", "course_fit", "going_fit", "weather_fit", "distance_fit"]
