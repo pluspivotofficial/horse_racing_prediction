@@ -107,9 +107,16 @@ class NetkeibaClient:
         return self.get(url, encoding="utf-8", force=force)
 
     def race_db(self, race_id: str, force: bool = False) -> str:
-        """Post-race DB page: conditions, weather, going, full result."""
+        """Post-race DB page: conditions, weather, going, full result.
+        (db.netkeiba lags a few days for recent races — see result_page.)"""
         url = f"https://db.netkeiba.com/race/{race_id}/"
         return self.get(url, encoding="euc-jp", force=force)
+
+    def result_page(self, race_id: str, force: bool = False) -> str:
+        """Race-day result page (populated immediately after a race runs,
+        before the DB catches up): finishing order, final odds, payouts."""
+        url = f"https://race.netkeiba.com/race/result.html?race_id={race_id}"
+        return self.get(url, encoding="utf-8", force=force)
 
     def horse_history(self, horse_id: str, force: bool = False) -> str:
         """Full career past-performance table."""

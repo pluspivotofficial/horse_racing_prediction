@@ -458,10 +458,15 @@ function renderSim(){
       <div class="n"><span class="roi" style="color:${col}">回収率 ${roi.toFixed(0)}%</span><span>${money(v.return)}</span></div></div>`;}).join('');
   const led=[...s.ledger].sort((a,b)=>b.profit-a.profit);
   const top2=led.slice(0,2).reduce((a,r)=>a+r.profit,0);
-  const fuku=s.by_type['複勝'];
-  const note=`※ 対象${DATA.race_count}レースを推奨どおり実際に購入した場合を、<b>実際の払戻(配当)</b>で精算した結果です（1点=${s.unit_yen}円・元手${money(s.bankroll_start)}）。`
-    +`ただし1週末のみで分散は大きく、利益${money(s.profit)}のうち${money(top2)}は${led[0].race.split(' ')[0]}等・上位2レースの的中に依存します。`
-    +(fuku?`堅実志向なら複勝中心（回収率${Math.round(fuku.roi*100)}%）が目安。`:'')+`長期の安定した回収率評価には複数週の検証が必要です。馬券は自己責任で。`;
+  const fuku=s.by_type['複勝'], wide=s.by_type['ワイド'];
+  const steady=[fuku,wide].filter(Boolean).map(v=>`${v===fuku?'複勝':'ワイド'}${Math.round(v.roi*100)}%`).join('・');
+  let note=`※ 対象${DATA.race_count}レースを推奨どおり実際に購入した場合を、<b>実際の払戻(配当)</b>で精算した結果です（1点=${s.unit_yen}円・元手${money(s.bankroll_start)}）。`;
+  if(s.profit>=0){
+    note+=`ただし1週末のみで分散は大きく、利益${money(s.profit)}のうち${money(top2)}は${led[0].race.split(' ')[0]}等・上位2レースの的中に依存します。`+(fuku?`堅実志向なら複勝中心（回収率${Math.round(fuku.roi*100)}%）が目安。`:'');
+  }else{
+    note+=`今週は妙味狙いの単勝・3連複などが外れ収支は${money(s.profit)}。一方で堅実な${steady||'複勝'}は健闘しており、券種の選び方次第で結果は大きく変わります。`;
+  }
+  note+=`長期の安定した回収率評価には複数週の検証が必要です。馬券は自己責任で。`;
   el.innerHTML=`<div class="simcard">
     <div class="sh"><h3>💴 収支シミュレーション</h3><span class="cap">推奨馬券を実配当で精算 ・ ${s.n_bets}点</span></div>
     <div class="simstats">

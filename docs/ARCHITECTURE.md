@@ -34,7 +34,8 @@ netkeiba の4エンドポイントで完結（すべて実ページで検証済�
 | `race/top/race_list_sub.html?kaisai_date=YYYYMMDD` | その日のrace_id一覧 |
 | `race/race/shutuba.html?race_id=` | 出馬表（枠・馬・騎手・斤量・オッズ） |
 | `race/race/oikiri.html?race_id=` | 追い切り（調教評価S〜D＋短評） |
-| `db/race/{id}/` | レース条件・天候・馬場・確定結果・**払戻(配当)** |
+| `db/race/{id}/` | レース条件・天候・馬場・確定結果・払戻（DBは数日遅れ） |
+| `race/race/result.html?race_id=` | **レース当日の**着順・確定オッズ・**払戻**（直近レース用） |
 | `db/horse/result/{id}/` | 各馬の全出走履歴（適性分析の核） |
 | `db/horse/ped/{id}/` | 3代血統表（父・母・母父） |
 | `db/horse/sire/{sire_id}/` | 父の産駒成績（芝/ダ別勝率・EI・平均勝ち距離・重賞） |

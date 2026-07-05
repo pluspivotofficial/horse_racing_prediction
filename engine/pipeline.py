@@ -40,16 +40,30 @@ def load_race(client: NetkeibaClient, race_id: str, want_result: bool = True) ->
     if not race.entries:
         warnings.append("出馬表が未確定（枠順・出走馬が未発表）。確定後に精度が上がります。")
 
-    # actual conditions + results (present only once a race has run)
+    # actual conditions + results (present only once a race has run).
+    # DB page is authoritative for older races; the race-day result page is
+    # used for recent races where the DB hasn't caught up yet.
     if want_result:
+        got = False
         try:
             db_html = client.race_db(race_id)
             dbrace = P.parse_race_db(db_html, race_id)
-            if dbrace.entries or dbrace.result or dbrace.name:
+            if dbrace.result:
                 _merge_result_page(race, dbrace)
-            race.payouts = P.parse_payouts(db_html)
+                race.payouts = P.parse_payouts(db_html)
+                got = True
+            elif dbrace.name:
+                _merge_result_page(race, dbrace)
         except Exception:
             pass
+        if not got:
+            try:
+                rrace = P.parse_result_page(client.result_page(race_id), race_id)
+                if rrace.result:
+                    _merge_result_page(race, rrace)
+                    race.payouts = rrace.payouts
+            except Exception:
+                pass
 
     if not race.weather:
         warnings.append("当日の天候が未確定のため、天候相性は暫定評価です。")

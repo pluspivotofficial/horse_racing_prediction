@@ -25,6 +25,14 @@ def _text(el) -> str:
     return el.get_text(strip=True) if el else ""
 
 
+# canonical bet-type names (DB uses 三連複; the result page uses 3連複)
+_BT_NORM = {"3連複": "三連複", "3連単": "三連単", "３連複": "三連複", "３連単": "三連単"}
+
+
+def _norm_bt(bt: str) -> str:
+    return _BT_NORM.get(bt, bt)
+
+
 def _first_idx(header: list[str], needles: list[str]) -> Optional[int]:
     for i, h in enumerate(header):
         if any(n in h for n in needles):
@@ -306,7 +314,7 @@ def parse_payouts(html: str) -> dict:
                 if nums and yen:
                     rows.append({"combo": nums, "yen": yen})
             if rows:
-                out[bet_type] = rows
+                out[_norm_bt(bet_type)] = rows
     return out
 
 
@@ -315,6 +323,85 @@ def _split_br(td) -> list[str]:
     html = td.decode_contents()
     parts = re.split(r"<br\s*/?>", html)
     return [re.sub(r"<[^>]+>", "", p).strip() for p in parts if re.sub(r"<[^>]+>", "", p).strip()]
+
+
+# --------------------------------------------------------------------------
+# race-day result page (race.netkeiba result.html) — live, before DB catches up
+# --------------------------------------------------------------------------
+def parse_result_page(html: str, race_id: str) -> Race:
+    soup = BeautifulSoup(html, "lxml")
+    meta = race_id_meta(race_id)
+    race = Race(race_id=race_id, venue=meta["venue"], venue_en=meta["venue_en"],
+                race_no=meta["race_no"])
+    nm = soup.select_one(".RaceName")
+    if nm:
+        race.name = nm.get_text(strip=True)
+    grade = GRADE_RE.search(race.name or "")
+    if grade:
+        race.grade = grade.group(1)
+    d01 = _text(soup.select_one(".RaceData01"))
+    _apply_conditions(race, d01)
+    off = re.search(r"(\d{1,2}):(\d{2})", d01)
+    if off:
+        race.off_time = off.group(0)
+    dt = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", html)
+    if dt:
+        race.date = f"{dt.group(1)}-{int(dt.group(2)):02d}-{int(dt.group(3)):02d}"
+
+    for tr in soup.select("table.RaceTable01 tr.HorseList"):
+        tds = tr.find_all("td")
+        cells = [_text(td) for td in tds]
+        finish = _int(cells[0]) if cells else None
+        a = tr.select_one('a[href*="/horse/"]')
+        if not (a and finish):
+            continue
+        hid = re.search(r"/horse/(\d+)", a["href"]).group(1)
+        race.result[hid] = finish
+        odds, pop = _result_row_odds_pop(cells)
+        if odds is not None:
+            race.result_odds[hid] = odds
+        if pop is not None:
+            race.result_pop[hid] = pop
+    race.field_size = len(race.result)
+    race.payouts = parse_result_payouts(soup)
+    return race
+
+
+def _result_row_odds_pop(cells: list[str]) -> tuple[Optional[float], Optional[int]]:
+    """In a result row, the win odds is a decimal (>=1.0) after the time, and
+    the popularity is the small integer immediately before it."""
+    for i, c in enumerate(cells):
+        if re.fullmatch(r"\d{1,4}\.\d", c) and _num(c) and _num(c) >= 1.0:
+            # skip the handicap weight (e.g. 58.0) — odds sits after the time col
+            if i >= 8:
+                pop = _int(cells[i - 1]) if i >= 1 and re.fullmatch(r"\d{1,2}", cells[i - 1]) else None
+                return _num(c), pop
+    return None, None
+
+
+def parse_result_payouts(soup) -> dict:
+    """Payouts from the result page's Payout_Detail_Table (different markup
+    from the DB page's pay_table_01)."""
+    out: dict[str, list] = {}
+    for tr in soup.select("table.Payout_Detail_Table tr"):
+        th = tr.find("th")
+        rtd = tr.select_one("td.Result")
+        ptd = tr.select_one("td.Payout")
+        if not th or not rtd or not ptd:
+            continue
+        bet_type = th.get_text(strip=True)
+        uls = rtd.select("ul")
+        if uls:
+            combos = [[int(x) for x in re.findall(r"\d+", ul.get_text())] for ul in uls]
+        else:
+            combos = [[int(x)] for div in rtd.select("div")
+                      for x in re.findall(r"\d+", div.get_text())]
+        yens = [int(re.sub(r"\D", "", p)) for p in re.split(r"<br\s*/?>", ptd.decode_contents())
+                if re.sub(r"\D", "", p)]
+        rows = [{"combo": c, "yen": y} for c, y in zip(combos, yens) if c and y]
+        if rows:
+            out[_norm_bt(bet_type)] = rows
+    return out
 
 
 # --------------------------------------------------------------------------

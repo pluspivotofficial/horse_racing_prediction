@@ -21,12 +21,16 @@ export default function Simulation({ sim }) {
 
   const led = [...sim.ledger].sort((a, b) => b.profit - a.profit);
   const top2 = led.slice(0, 2).reduce((a, r) => a + r.profit, 0);
-  const fuku = sim.by_type["複勝"];
-  const note = `※ 対象${sim.ledger.length}レースを推奨どおり実際に購入した場合を、実際の払戻(配当)で精算した結果です`
-    + `（1点=${sim.unit_yen}円・元手${money(sim.bankroll_start)}）。ただし1週末のみで分散は大きく、`
-    + `利益${money(sim.profit)}のうち${money(top2)}は${led[0].race.split(" ")[0]}等・上位2レースの的中に依存します。`
-    + (fuku ? `堅実志向なら複勝中心（回収率${Math.round(fuku.roi * 100)}%）が目安。` : "")
-    + `長期の安定した回収率評価には複数週の検証が必要です。馬券は自己責任で。`;
+  const fuku = sim.by_type["複勝"], wide = sim.by_type["ワイド"];
+  const steady = [["複勝", fuku], ["ワイド", wide]].filter(([, v]) => v)
+    .map(([n, v]) => `${n}${Math.round(v.roi * 100)}%`).join("・");
+  const head = `※ 対象${sim.ledger.length}レースを推奨どおり実際に購入した場合を、実際の払戻(配当)で精算した結果です`
+    + `（1点=${sim.unit_yen}円・元手${money(sim.bankroll_start)}）。`;
+  const body = sim.profit >= 0
+    ? `ただし1週末のみで分散は大きく、利益${money(sim.profit)}のうち${money(top2)}は${led[0].race.split(" ")[0]}等・上位2レースの的中に依存します。`
+      + (fuku ? `堅実志向なら複勝中心（回収率${Math.round(fuku.roi * 100)}%）が目安。` : "")
+    : `今週は妙味狙いの単勝・3連複などが外れ収支は${money(sim.profit)}。一方で堅実な${steady || "複勝"}は健闘しており、券種の選び方次第で結果は大きく変わります。`;
+  const note = head + body + `長期の安定した回収率評価には複数週の検証が必要です。馬券は自己責任で。`;
 
   const Stat = ({ k, v, cls }) => (
     <div className="simstat"><div className="k">{k}</div><div className={`v ${cls || ""}`}>{v}</div></div>
