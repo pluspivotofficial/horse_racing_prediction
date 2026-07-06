@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { BetButton } from "./Wallet";
 
 const MARK_CLASS = ["m0", "m1", "m2", "m3", "m4"];
 
@@ -15,7 +16,7 @@ function factorColor(v) {
   return "var(--coral)";
 }
 
-export default function HorseRow({ h, race, idx, defaultOpen, factorLabels, factorOrder }) {
+export default function HorseRow({ h, race, rp, idx, defaultOpen, factorLabels, factorOrder }) {
   const [open, setOpen] = useState(defaultOpen);
   const res = race.result || {};
   const fin = res[h.horse_id];
@@ -50,6 +51,7 @@ export default function HorseRow({ h, race, idx, defaultOpen, factorLabels, fact
             <div className="l">単勝</div>
           </div>
           {vtag}
+          <BetButton rp={rp} h={h} />
         </div>
       </div>
 

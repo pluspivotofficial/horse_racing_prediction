@@ -39,8 +39,8 @@ export default function Simulation({ sim }) {
   return (
     <section className="simcard">
       <div className="sh">
-        <h3>💴 収支シミュレーション</h3>
-        <span className="cap">推奨馬券を実配当で精算 ・ {sim.n_bets}点</span>
+        <h3>🤖 AIにまるごと乗ったら（実績）</h3>
+        <span className="cap">AIの推奨を全部・実配当で精算 ・ {sim.n_bets}点</span>
       </div>
       <div className="simstats">
         <Stat k="投資額" v={money(sim.staked)} />

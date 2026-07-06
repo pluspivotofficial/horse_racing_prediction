@@ -216,12 +216,98 @@ a{color:inherit}
 .btrow .roi{font-family:var(--num);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
 .simnote{font-size:12px;color:var(--ink2);margin-top:16px;line-height:1.75;border-left:2px solid var(--gold-dim);padding-left:13px}
 
+
+/* ===== 擬似体験ウォレット & ベット ===== */
+.wallet-chip{display:flex;align-items:center;gap:9px;border:1px solid var(--gold-dim);border-radius:999px;padding:7px 14px 7px 12px;cursor:pointer;background:var(--surface);transition:.2s}
+.wallet-chip:hover{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 12%,transparent)}
+.wallet-chip .coin{font-size:15px}
+.wallet-chip .bal{font-family:var(--num);font-weight:600;font-size:16px;color:var(--gold);font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.wallet-chip .dl{font-size:10px;font-weight:700;font-variant-numeric:tabular-nums}
+.wallet-chip .dl.up{color:var(--turf)} .wallet-chip .dl.down{color:var(--coral)}
+@media(max-width:520px){.wallet-chip .dl{display:none}}
+
+.betbtn{border:1px solid var(--gold-dim);background:transparent;color:var(--gold);border-radius:8px;padding:8px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:.15s;white-space:nowrap}
+.betbtn:hover{background:var(--gold);color:#2a2008}
+
+/* bet tray */
+#bettray{margin-bottom:6px}
+.tray{border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface2);padding:15px 17px}
+.tray .mybet{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;padding:8px 0;border-bottom:1px solid var(--line)}
+.tray .mybet:last-of-type{border:none}
+.tray .mybet .r{font-family:var(--num);font-weight:600;white-space:nowrap}
+.tray .mybet .r.won{color:var(--turf)} .tray .mybet .r.lost{color:var(--muted)} .tray .mybet .r.pend{color:var(--gold-dim)}
+.tray .empty{color:var(--muted);font-size:13px;line-height:1.7}
+.tray .acts{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center}
+.reveal-btn{border:none;background:linear-gradient(100deg,var(--gold),var(--gold-soft));color:#2a2008;border-radius:11px;padding:12px 20px;font-weight:800;font-size:14px;cursor:pointer;font-family:var(--sans);flex:1;min-width:200px}
+.reveal-btn:hover{filter:brightness(1.05)}
+
+/* bet slip bottom sheet */
+.backdrop{position:fixed;inset:0;background:rgba(5,4,3,.55);z-index:150;opacity:0;pointer-events:none;transition:.28s}
+.backdrop.on{opacity:1;pointer-events:auto}
+.betslip{position:fixed;left:50%;bottom:0;transform:translate(-50%,110%);width:min(460px,96vw);
+  background:var(--surface);border:1px solid var(--line2);border-bottom:none;border-radius:20px 20px 0 0;
+  box-shadow:0 -24px 70px -24px rgba(0,0,0,.7);padding:24px 24px 30px;z-index:200;transition:transform .3s cubic-bezier(.2,.85,.25,1)}
+.betslip.open{transform:translate(-50%,0)}
+.bs-close{position:absolute;top:16px;right:18px;cursor:pointer;color:var(--muted);font-size:16px;background:none;border:none}
+.betslip h4{font-family:var(--serif);font-size:19px;margin:0 0 3px;font-weight:600}
+.betslip .sub{font-size:12px;color:var(--ink2);margin-bottom:16px}
+.bs-toggle{display:flex;gap:8px;margin-bottom:16px}
+.bs-toggle button{flex:1;border:1px solid var(--line2);background:transparent;color:var(--ink2);border-radius:10px;padding:11px;font-weight:700;cursor:pointer;font-size:13px;font-family:var(--sans)}
+.bs-toggle button.on{border-color:var(--gold);color:var(--gold);background:color-mix(in srgb,var(--gold) 12%,transparent)}
+.bs-amt{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px}
+.bs-amt .lab{font-size:11px;color:var(--muted);letter-spacing:.1em}
+.bs-amt .a{font-family:var(--num);font-size:28px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+.bs-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.bs-chips button{border:1px solid var(--line2);background:transparent;color:var(--ink);border-radius:9px;padding:9px 13px;font-family:var(--num);font-weight:600;cursor:pointer;font-size:13px}
+.bs-chips button:hover{border-color:var(--gold-dim)}
+.bs-pot{font-size:12.5px;color:var(--ink2);margin-bottom:16px;min-height:18px}
+.bs-pot b{color:var(--turf);font-family:var(--num)}
+.bs-go{width:100%;border:none;background:var(--gold);color:#2a2008;border-radius:12px;padding:15px;font-weight:800;font-size:15px;cursor:pointer;font-family:var(--sans)}
+.bs-go:disabled{opacity:.4;cursor:not-allowed}
+
+/* reveal overlay */
+.reveal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(6,5,3,.86);backdrop-filter:blur(7px);padding:20px}
+.reveal.on{display:flex}
+.reveal .card{text-align:center;max-width:400px;animation:rvpop .4s cubic-bezier(.2,.9,.3,1.2)}
+.reveal .run{font-size:66px;animation:gallop .55s ease-in-out infinite}
+@keyframes gallop{0%,100%{transform:translateX(-12px) rotate(-3deg)}50%{transform:translateX(12px) rotate(3deg)}}
+@keyframes rvpop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+.reveal .amt{font-family:var(--num);font-size:clamp(38px,10vw,54px);font-weight:800;line-height:1;margin:6px 0}
+.reveal .amt.win{color:var(--gold);text-shadow:0 0 30px color-mix(in srgb,var(--gold) 40%,transparent)}
+.reveal .amt.lose{color:var(--ink2)}
+.reveal .detail{font-size:12px;color:var(--ink2);margin-top:10px;line-height:1.9;text-align:left;display:inline-block}
+.reveal .rvgo{margin-top:20px;border:none;background:var(--gold);color:#2a2008;border-radius:12px;padding:13px 30px;font-weight:800;cursor:pointer;font-family:var(--sans);font-size:14px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);background:var(--surface);border:1px solid var(--gold-dim);color:var(--ink);padding:13px 22px;border-radius:12px;z-index:400;opacity:0;pointer-events:none;transition:.3s;font-size:13px;box-shadow:var(--shadow);max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* coins */
+.coinfx{position:fixed;top:-30px;z-index:350;font-size:22px;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(360deg);opacity:.2}}
+
+/* wallet modal */
+.wmodal{position:fixed;inset:0;z-index:250;display:none;align-items:flex-start;justify-content:center;padding:80px 16px;background:rgba(5,4,3,.55)}
+.wmodal.on{display:flex}
+.wmbox{background:var(--surface);border:1px solid var(--line2);border-radius:18px;padding:24px;width:min(440px,96vw);max-height:76vh;overflow:auto;box-shadow:var(--shadow)}
+.wmbox h4{font-family:var(--serif);font-size:20px;margin:0 0 4px;font-weight:600}
+.wmbox .big{font-family:var(--num);font-size:32px;font-weight:700;color:var(--gold);margin:6px 0}
+.wmbox .pl{font-size:13px;font-family:var(--num);font-weight:600}
+.wmbox .pl.up{color:var(--turf)} .wmbox .pl.down{color:var(--coral)}
+.wmbox .hist{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.wmbox .hrow{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;color:var(--ink2);gap:10px}
+.wmbox .hrow .v{font-family:var(--num);font-weight:600;white-space:nowrap}
+.wmbtns{display:flex;gap:10px;margin-top:18px}
+.wmbtns button{flex:1;border:1px solid var(--line2);background:transparent;color:var(--ink2);border-radius:10px;padding:11px;cursor:pointer;font-weight:700;font-size:13px;font-family:var(--sans)}
+.wmbtns button.reset{border-color:var(--coral);color:var(--coral)}
+
 </style>
 
 <div class="topbar"><div class="wrap">
   <div class="brand"><span class="logo">🐎</span><span>TURF ORACLE<small>WEEKEND RACING AI</small></span></div>
   <span class="spacer"></span>
   <span class="week-badge" id="weekBadge">今週末を予想</span>
+  <div class="wallet-chip" id="walletChip" title="マイウォレット"><span class="coin">🪙</span><span class="bal">¥100,000</span><span class="dl up">+¥0</span></div>
   <button class="theme-btn" id="themeBtn" title="テーマ切替">◐</button>
 </div></div>
 
@@ -243,6 +329,11 @@ a{color:inherit}
   <div class="foot" id="foot"></div>
 </div>
 
+<div class="backdrop" id="backdrop"></div>
+<div class="betslip" id="betslip"><button class="bs-close">✕</button><div id="slipBody"></div></div>
+<div class="reveal" id="reveal"><div id="revealBody"></div></div>
+<div class="wmodal" id="wmodal"><div class="wmbox"></div></div>
+<div class="toast" id="toast"></div>
 <script id="DATA" type="application/json">__RACE_DATA__</script>
 <script>
 /* ===================== renderer ===================== */
@@ -354,6 +445,7 @@ function horseRow(h,r,idx){
         <div class="winp"><div class="p">${Math.round(h.win_prob*100)}<span style="font-size:12px">%</span></div><div class="l">勝率</div></div>
         <div class="odds"><div class="p">${h.odds?h.odds.toFixed(1):'—'}</div><div class="l">単勝</div></div>
         ${vtag}
+        <button class="betbtn" data-rid="${r.race_id}" data-hno="${h.horse_no}">賭ける</button>
       </div>
     </div>
     <div class="hdetail">
@@ -394,6 +486,8 @@ function renderPanel(){
     </div>
     <div class="section-t" style="margin:18px 0 8px">予想オーダー（クリックで根拠を展開）</div>
     ${rp.horses.map((h,i)=>horseRow(h,r,i)).join('')}
+    <div class="section-t" style="margin:22px 0 10px">🎫 あなたの馬券（擬似体験）</div>
+    <div id="bettray"></div>
     <div class="betsec">
       <div class="section-t" style="margin:0 0 10px">💰 推奨馬券プラン</div>
       <div class="tickets">${bets||'<div style="color:var(--muted)">条件を満たす推奨馬券がありません</div>'}</div>
@@ -409,6 +503,10 @@ function renderPanel(){
   </div>`;
   document.querySelectorAll('#panel .horse').forEach(el=>el.querySelector('.hmain').onclick=()=>el.classList.toggle('open'));
   if(rp.horses[0]) document.querySelector('#panel .horse')?.classList.add('open');
+  renderBetTray(rp);
+  document.querySelectorAll('#panel .betbtn[data-hno]').forEach(b=>b.onclick=e=>{e.stopPropagation();openSlip(b.dataset.rid,b.dataset.hno);});
+  document.querySelectorAll('#panel .ai-buy').forEach(b=>b.onclick=()=>aiBuyAll(b.dataset.rid));
+  document.querySelectorAll('#panel .reveal-btn').forEach(b=>b.onclick=()=>settleAndReveal(b.dataset.rid));
 }
 
 function renderAll(){renderVenues();renderRaceBar();renderPanel();
@@ -468,7 +566,7 @@ function renderSim(){
   }
   note+=`長期の安定した回収率評価には複数週の検証が必要です。馬券は自己責任で。`;
   el.innerHTML=`<div class="simcard">
-    <div class="sh"><h3>💴 収支シミュレーション</h3><span class="cap">推奨馬券を実配当で精算 ・ ${s.n_bets}点</span></div>
+    <div class="sh"><h3>🤖 AIにまるごと乗ったら（実績）</h3><span class="cap">AIの推奨を全部・実配当で精算 ・ ${s.n_bets}点</span></div>
     <div class="simstats">
       ${stat('投資額', money(s.staked))}
       ${stat('回収額', money(s.returned),'gold')}
@@ -482,5 +580,125 @@ function renderSim(){
     <div class="simnote">${note}</div>
   </div>`;
 }
-renderStats();renderSim();renderAll();renderFoot();
+/* ===== 擬似体験ウォレット ===== */
+const WKEY='turf_wallet_v2';
+let WALLET=(()=>{try{return JSON.parse(localStorage.getItem(WKEY))}catch(e){return null}})()||{balance:100000,start:100000,bets:[]};
+function saveWallet(){try{localStorage.setItem(WKEY,JSON.stringify(WALLET))}catch(e){}renderWalletChip();}
+function renderWalletChip(){const el=document.getElementById('walletChip');if(!el)return;
+  const pl=WALLET.balance-WALLET.start;const dl=el.querySelector('.dl');
+  el.querySelector('.bal').textContent=money(WALLET.balance);
+  dl.className='dl '+(pl>=0?'up':'down');dl.textContent=(pl>=0?'+':'−')+money(Math.abs(pl)).replace('¥','¥');}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('on'),2600);}
+
+/* --- bet slip --- */
+let SLIP=null;
+function openSlip(rid,hno){const rp=DATA.races.find(x=>x.race.race_id===rid);if(!rp)return;
+  const h=rp.horses.find(x=>String(x.horse_no)===String(hno));if(!h)return;
+  SLIP={rp,h,type:'単勝',amt:500};renderSlip();
+  document.getElementById('betslip').classList.add('open');document.getElementById('backdrop').classList.add('on');}
+function closeSlip(){document.getElementById('betslip').classList.remove('open');document.getElementById('backdrop').classList.remove('on');SLIP=null;}
+function renderSlip(){if(!SLIP)return;const {h,rp,type,amt}=SLIP;const r=rp.race;
+  const pot=type==='単勝'&&h.odds?`的中で <b>${money(amt*h.odds)}</b>（×${h.odds.toFixed(1)}）`:'的中で払戻（配当は結果で確定）';
+  const over=amt>WALLET.balance;
+  document.getElementById('slipBody').innerHTML=
+   `<h4>${h.confidence||''} ${esc(h.horse_name)}</h4>
+    <div class="sub">${r.venue}${r.race_no}R ${esc(r.name||'')} ・ ${h.horse_no}番 ／ 残高 ${money(WALLET.balance)}</div>
+    <div class="bs-toggle">
+      <button data-t="単勝" class="${type==='単勝'?'on':''}">単勝（1着）</button>
+      <button data-t="複勝" class="${type==='複勝'?'on':''}">複勝（3着内）</button></div>
+    <div class="bs-amt"><span class="lab">賭け金</span><span class="a">${money(amt)}</span></div>
+    <div class="bs-chips">${[100,500,1000,3000,5000].map(v=>`<button data-amt="${v}">+${v.toLocaleString()}</button>`).join('')}<button data-amt="clear" style="color:var(--coral)">クリア</button></div>
+    <div class="bs-pot">${pot}</div>
+    <button class="bs-go" ${amt<=0||over?'disabled':''}>${over?'残高が足りません':`${money(amt)}を賭ける`}</button>`;}
+function confirmBet(){if(!SLIP)return;const {h,rp,type,amt}=SLIP;const r=rp.race;
+  if(amt<=0||amt>WALLET.balance){toast('金額を確認してください');return;}
+  WALLET.balance-=amt;
+  WALLET.bets.push({id:'b'+Date.now()+Math.floor(Math.random()*1e4),raceId:r.race_id,
+    raceName:`${r.venue}${r.race_no}R ${r.name||''}`,payKey:type,label:`${type} ${h.horse_no} ${h.horse_name}`,
+    combos:[[h.horse_no]],stake:amt,odds:h.odds||null,status:'pending',payout:0,ts:Date.now()});
+  saveWallet();closeSlip();toast(`${money(amt)}を「${type}・${h.horse_name}」に投票`);renderPanel();}
+
+function aiBuyAll(rid){const rp=DATA.races.find(x=>x.race.race_id===rid);if(!rp)return;let n=0,cost=0;
+  (rp.bets||[]).forEach(b=>{const stake=Math.round(b.stake_units*100);if(stake<=0||stake>WALLET.balance)return;
+    WALLET.balance-=stake;cost+=stake;n++;
+    WALLET.bets.push({id:'b'+Date.now()+Math.floor(Math.random()*1e4),raceId:rid,
+      raceName:`${rp.race.venue}${rp.race.race_no}R ${rp.race.name||''}`,payKey:b.pay_key,
+      label:`${b.bet_type} ${b.selection}`,combos:b.combos||[],stake,odds:null,status:'pending',payout:0,ts:Date.now()});});
+  saveWallet();toast(n?`AI推奨${n}点（${money(cost)}）を購入`:'購入できる推奨がありません');renderPanel();}
+
+/* --- settle + reveal --- */
+function settleAndReveal(rid){const rp=DATA.races.find(x=>x.race.race_id===rid);const payouts=rp.race.payouts||{};
+  const pend=WALLET.bets.filter(b=>b.raceId===rid&&b.status==='pending');
+  if(!pend.length){toast('このレースの馬券がありません');return;}
+  if(!Object.keys(rp.race.result||{}).length){toast('発走前です（結果確定後に精算）');return;}
+  pend.forEach(b=>{const tbl={};(payouts[b.payKey]||[]).forEach(row=>{tbl[row.combo.slice().sort((x,y)=>x-y).join('-')]=row.yen;});
+    const combos=b.combos&&b.combos.length?b.combos:[[]];const per=b.stake/combos.length;let ret=0;
+    combos.forEach(c=>{const k=c.slice().sort((x,y)=>x-y).join('-');if(tbl[k])ret+=tbl[k]/100*per;});
+    b.status=ret>0?'won':'lost';b.payout=Math.round(ret);});
+  const stake=pend.reduce((a,b)=>a+b.stake,0),ret=pend.reduce((a,b)=>a+b.payout,0);
+  runReveal(rp,pend,stake,ret);}
+function runReveal(rp,bets,stake,ret){const ov=document.getElementById('reveal'),body=document.getElementById('revealBody');
+  ov.classList.add('on');
+  body.innerHTML=`<div class="card"><div class="run">🐎</div><div style="color:var(--ink2);letter-spacing:.24em;margin-top:14px;font-size:13px">レース中…</div></div>`;
+  setTimeout(()=>{const win=ret>0,net=ret-stake;
+    const winId=Object.keys(rp.race.result).find(hid=>rp.race.result[hid]===1);
+    const wname=(rp.horses.find(h=>h.horse_id===winId)||{}).horse_name||'';
+    body.innerHTML=`<div class="card">
+      <div style="font-size:44px">${win?'🎉':'🥕'}</div>
+      <div style="font-size:12px;color:var(--muted);letter-spacing:.16em;margin:10px 0 2px">1着 ${esc(wname)}</div>
+      <div class="amt ${win?'win':'lose'}">${win?'+':''}${money(ret)}</div>
+      <div style="font-size:13px;color:var(--ink2);margin-top:8px">投資 ${money(stake)} → 払戻 ${money(ret)}（収支 ${net>=0?'+':'−'}${money(Math.abs(net))}）</div>
+      <div class="detail">${bets.map(b=>`<div>${b.status==='won'?'✅':'✗'} ${esc(b.label)} … <b style="color:${b.status==='won'?'var(--turf)':'var(--muted)'}">${b.payout?money(b.payout):'0'}</b></div>`).join('')}</div>
+      <div><button class="rvgo" id="rvClose">受け取る（残高に反映）</button></div></div>`;
+    document.getElementById('rvClose').onclick=()=>{const from=WALLET.balance;WALLET.balance+=ret;saveWallet();
+      countUp(from,WALLET.balance);ov.classList.remove('on');if(win)burstCoins();renderPanel();};},1350);}
+function countUp(from,to){const el=document.getElementById('walletChip');if(!el)return;const bal=el.querySelector('.bal');
+  const steps=26;let i=0;const st=(to-from)/steps;const t=setInterval(()=>{i++;bal.textContent=money(from+st*i);
+    if(i>=steps){bal.textContent=money(to);clearInterval(t);renderWalletChip();}},22);}
+function burstCoins(){for(let i=0;i<16;i++){const c=document.createElement('div');c.className='coinfx';c.textContent='🪙';
+  c.style.left=(Math.random()*100)+'vw';c.style.animationDuration=(1.6+Math.random()*1.4)+'s';document.body.appendChild(c);
+  setTimeout(()=>c.remove(),3200);}}
+
+/* --- bet tray --- */
+function renderBetTray(rp){const el=document.getElementById('bettray');if(!el)return;const r=rp.race;
+  const mine=WALLET.bets.filter(b=>b.raceId===r.race_id);
+  const pend=mine.filter(b=>b.status==='pending');const hasRes=Object.keys(r.result||{}).length>0;
+  const rows=mine.length?mine.map(b=>{const st=b.status==='pending'?'発走待ち':(b.status==='won'?'払戻 '+money(b.payout):'はずれ');
+    const cls=b.status==='won'?'won':b.status==='lost'?'lost':'pend';
+    return `<div class="mybet"><span>${esc(b.label)}<span style="color:var(--muted)"> ・ ${money(b.stake)}</span></span><span class="r ${cls}">${st}</span></div>`;}).join('')
+    :`<div class="empty">まだ投票していません。各馬の<b style="color:var(--gold)">「賭ける」</b>ボタン、または下のAI推奨から購入できます。</div>`;
+  const aiCost=(rp.bets||[]).reduce((a,b)=>a+Math.round(b.stake_units*100),0);
+  el.innerHTML=`<div class="tray">${rows}<div class="acts">
+    ${rp.bets&&rp.bets.length?`<button class="betbtn ai-buy" data-rid="${r.race_id}">🤖 AI推奨を全部買う（${money(aiCost)}）</button>`:''}
+    ${pend.length&&hasRes?`<button class="reveal-btn" data-rid="${r.race_id}">▶ レースを見て精算する（${pend.length}点）</button>`:''}
+    ${pend.length&&!hasRes?`<span style="color:var(--muted);font-size:12px">発走前 — 結果確定後に精算できます</span>`:''}
+  </div></div>`;}
+
+/* --- wallet modal --- */
+function openWallet(){const m=document.getElementById('wmodal');const pl=WALLET.balance-WALLET.start;
+  const hist=[...WALLET.bets].reverse().slice(0,40).map(b=>{const st=b.status==='pending'?'—':(b.status==='won'?'+'+money(b.payout):'0');
+    const col=b.status==='won'?'var(--turf)':b.status==='lost'?'var(--muted)':'var(--gold-dim)';
+    return `<div class="hrow"><span>${esc(b.raceName||'')}<br><span style="color:var(--muted)">${esc(b.label)} ・ ${money(b.stake)}</span></span><span class="v" style="color:${col}">${st}</span></div>`;}).join('')||'<div class="empty" style="color:var(--muted);font-size:13px">まだ履歴がありません</div>';
+  m.querySelector('.wmbox').innerHTML=`<h4>🪙 マイウォレット</h4>
+    <div class="big">${money(WALLET.balance)}</div>
+    <div class="pl ${pl>=0?'up':'down'}">通算収支 ${pl>=0?'+':'−'}${money(Math.abs(pl))} ／ 元手 ${money(WALLET.start)}</div>
+    <div class="hist"><div style="font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:8px">投票履歴</div>${hist}</div>
+    <div class="wmbtns"><button id="wmClose">閉じる</button><button class="reset" id="wmReset">残高をリセット</button></div>`;
+  m.classList.add('on');
+  document.getElementById('wmClose').onclick=()=>m.classList.remove('on');
+  document.getElementById('wmReset').onclick=()=>{if(confirm('残高と履歴をリセットして¥100,000に戻しますか？')){WALLET={balance:100000,start:100000,bets:[]};saveWallet();m.classList.remove('on');renderPanel();toast('ウォレットをリセットしました');}};}
+
+/* --- wiring --- */
+function initWallet(){
+  document.getElementById('betslip').addEventListener('click',e=>{
+    const t=e.target.closest('[data-t]');if(t){SLIP.type=t.dataset.t;renderSlip();return;}
+    const a=e.target.closest('[data-amt]');if(a){SLIP.amt=a.dataset.amt==='clear'?0:(SLIP.amt||0)+parseInt(a.dataset.amt);renderSlip();return;}
+    if(e.target.closest('.bs-go')){confirmBet();return;}
+    if(e.target.closest('.bs-close')){closeSlip();return;}});
+  document.getElementById('backdrop').addEventListener('click',closeSlip);
+  document.getElementById('walletChip').addEventListener('click',openWallet);
+  renderWalletChip();
+}
+
+renderStats();renderSim();renderAll();renderFoot();initWallet();
 </script>

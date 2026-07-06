@@ -4,6 +4,7 @@ import { FACTOR_LABELS, FACTOR_ORDER } from "@/lib/factors";
 import HorseRow from "./HorseRow";
 import Bets from "./Bets";
 import Simulation from "./Simulation";
+import { WalletProvider, WalletChip, BetTray } from "./Wallet";
 
 export default function Dashboard({ data, stats }) {
   const [venue, setVenue] = useState("ALL");
@@ -27,6 +28,7 @@ export default function Dashboard({ data, stats }) {
   const weekLabel = d.length ? `対象 ${d[0]}〜${d[d.length - 1]}` : "今週末を予想";
 
   return (
+    <WalletProvider>
     <div data-theme={dark ? "" : "light"}>
       <div className="topbar">
         <div className="wrap">
@@ -36,6 +38,7 @@ export default function Dashboard({ data, stats }) {
           </div>
           <span className="spacer" />
           <span className="week-badge" dangerouslySetInnerHTML={{ __html: weekLabel.replace(/(\d{8}〜\d{8}|\d{4}.*)/, "<b>$1</b>") }} />
+          <WalletChip />
           <button className="theme-btn" onClick={() => setDark((v) => !v)} title="テーマ切替">◐</button>
         </div>
       </div>
@@ -90,6 +93,7 @@ export default function Dashboard({ data, stats }) {
         </div>
       </div>
     </div>
+    </WalletProvider>
   );
 }
 
@@ -147,9 +151,12 @@ function RacePanel({ rp }) {
 
       <div className="section-t" style={{ margin: "18px 0 8px" }}>予想オーダー（クリックで根拠を展開）</div>
       {rp.horses.map((h, i) => (
-        <HorseRow key={h.horse_id} h={h} race={r} idx={i} defaultOpen={i === 0}
+        <HorseRow key={h.horse_id} h={h} race={r} rp={rp} idx={i} defaultOpen={i === 0}
           factorLabels={FACTOR_LABELS} factorOrder={FACTOR_ORDER} />
       ))}
+
+      <div className="section-t" style={{ margin: "22px 0 10px" }}>🎫 あなたの馬券（擬似体験）</div>
+      <BetTray rp={rp} />
 
       <Bets bets={rp.bets} />
 
