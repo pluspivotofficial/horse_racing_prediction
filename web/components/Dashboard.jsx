@@ -65,7 +65,7 @@ export default function Dashboard({ data, stats }) {
           {filtered.map((rp) => {
             const i = races.indexOf(rp);
             const r = rp.race, top = rp.horses[0], res = r.result || {};
-            let hit = null;
+            let hit = "🕒";
             if (Object.keys(res).length && top) {
               const f = res[top.horse_id];
               hit = f === 1 ? "🎯" : f && f <= 3 ? "✅" : "—";
@@ -99,23 +99,29 @@ export default function Dashboard({ data, stats }) {
 
 function StatGrid({ stats, venues }) {
   const cards = [];
-  cards.push(["分析レース数", stats.n, (venues || []).join(" / "), "turf"]);
+  cards.push([stats.scored ? "分析レース数" : "予想レース数", stats.n, (venues || []).join(" / "), "turf"]);
   if (stats.scored) {
     cards.push(["◎の複勝的中率", stats.plcPct + "%", `本命が3着内 ${stats.plcHit}/${stats.scored}R`, "gold"]);
     cards.push(["◎の単勝的中率", stats.winPct + "%", `本命が勝利 ${stats.winHit}/${stats.scored}R`, "sky"]);
   } else {
-    cards.push(["ファクター数", "13", "多角的にスコアリング", "sky"]);
+    if (stats.marquee) {
+      const m = stats.marquee.race;
+      cards.push(["今週の注目", (m.name || "").slice(0, 7), `${m.venue}${m.race_no}R ${m.grade || ""} ${m.surface || ""}${m.distance || ""}m`, "gold"]);
+    }
+    if (stats.topPick) {
+      cards.push(["最有力の本命", stats.topPick.horse_name.slice(0, 7), `${stats.topPick.race.venue}${stats.topPick.race.race_no}R・勝率${Math.round(stats.topPick.win_prob * 100)}%`, "sky"]);
+    }
   }
   if (stats.bestVal && stats.bestVal.value > 0) {
     const b = stats.bestVal;
     cards.push(["今週の妙味No.1", b.horse_name.slice(0, 7),
       `${b.race.venue}${b.race.race_no}R・EV${(b.win_prob * b.odds).toFixed(2)}`, "gold"]);
   } else {
-    cards.push(["推奨馬券", "自動生成", "単複〜3連複まで", "turf"]);
+    cards.push([stats.scored ? "推奨馬券" : "ファクター数", stats.scored ? "自動生成" : "13", stats.scored ? "単複〜3連複まで" : "多角的にスコアリング", "turf"]);
   }
   return (
     <div className="statgrid">
-      {cards.map((c, i) => (
+      {cards.slice(0, 4).map((c, i) => (
         <div key={i} className={`stat ${c[3]}`}>
           <div className="k">{c[0]}</div><div className="v">{c[1]}</div><div className="s">{c[2]}</div>
         </div>

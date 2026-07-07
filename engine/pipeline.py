@@ -71,6 +71,8 @@ def load_race(client: NetkeibaClient, race_id: str, want_result: bool = True) ->
         warnings.append("当日の馬場状態が未確定のため、道悪適性は暫定評価です。")
     if not any(e.odds for e in race.entries) and not race.result_odds:
         warnings.append("オッズ未発売のため、期待値（妙味）の算出は暫定です。")
+    if race.entries and not any(e.draw for e in race.entries):
+        warnings.append("枠順・馬番が未確定のため、暫定の並び順で表示しています（確定後に更新）。")
 
     # workout (追い切り) table for the whole race — one fetch
     workouts: dict[str, dict] = {}

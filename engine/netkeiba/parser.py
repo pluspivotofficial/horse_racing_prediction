@@ -112,6 +112,13 @@ def parse_shutuba(html: str, race_id: str) -> Race:
     grade = GRADE_RE.search(race.name or "")
     if grade:
         race.grade = grade.group(1)
+    if not race.grade:  # grade shown as an icon (Icon_GradeType3 = GIII ...)
+        icon = soup.select_one(".Icon_GradeType1,.Icon_GradeType2,.Icon_GradeType3,.Icon_GradeType5")
+        if icon:
+            for cl in icon.get("class", []):
+                m = re.fullmatch(r"Icon_GradeType(\d+)", cl)
+                if m:
+                    race.grade = {"1": "GI", "2": "GII", "3": "GIII", "5": "L"}.get(m.group(1), race.grade)
 
     for tr in soup.select("tr.HorseList"):
         tds = tr.find_all("td")
@@ -122,7 +129,7 @@ def parse_shutuba(html: str, race_id: str) -> Race:
         hid = re.search(r"/horse/(\d+)", horse_a["href"]).group(1) if horse_a else ""
         jid = re.search(r"/jockey/[a-z/]*(\d+)", jockey_a["href"]).group(1) if jockey_a else ""
         cells = [_text(td) for td in tds]
-        odds, pop = _shutuba_odds_pop(cells)
+        odds, pop = _shutuba_odds_pop(tr, cells)
         entry = Entry(
             horse_id=hid,
             horse_name=_text(horse_a) or _pick(cells, 3),
@@ -141,6 +148,12 @@ def parse_shutuba(html: str, race_id: str) -> Race:
             entry.body_weight = int(bw.group(1))
             entry.body_weight_diff = int(bw.group(2))
         race.entries.append(entry)
+
+    # draw not yet held (early in the week): give provisional running numbers
+    # so the UI/betting work; the real 馬番 fills in once the draw is confirmed.
+    if race.entries and not any(e.horse_no for e in race.entries):
+        for i, e in enumerate(race.entries, 1):
+            e.horse_no = i
 
     race.field_size = len(race.entries)
     return race
@@ -172,17 +185,28 @@ def _find_pop(cells: list[str]) -> str:
     return ""
 
 
-def _shutuba_odds_pop(cells: list[str]) -> tuple[Optional[float], Optional[int]]:
-    """Odds and favourite-rank sit immediately after the body-weight cell,
-    e.g. ... '468(-4)', '3.5', '2', ...  Anchor off body weight to avoid
-    mistaking the 55.0 handicap weight for odds."""
-    bw_i = next((i for i, c in enumerate(cells) if BODY_RE.search(c) or c in ("計不", "--")), None)
-    tail = cells[bw_i + 1:] if bw_i is not None else cells
-    odds = next((_num(c) for c in tail if re.fullmatch(r"\d{1,4}\.\d", c)), None)
-    pop = None
-    if odds is not None:
-        after = tail[tail.index(f"{odds:g}") + 1:] if f"{odds:g}" in tail else tail
-        pop = next((_int(c) for c in after if re.fullmatch(r"\d{1,2}", c)), None)
+def _shutuba_odds_pop(tr, cells: list[str]) -> tuple[Optional[float], Optional[int]]:
+    """Odds/favourite-rank from the dedicated cells (id="odds-*"/"ninki-*").
+
+    These are '---.-'/'**' until odds go on sale, in which case we return None
+    (correctly "not yet published") rather than mistaking the 57.0 handicap
+    weight for odds.  Falls back to a body-weight anchor for older markup.
+    """
+    odds = pop = None
+    o_el = tr.select_one('[id^="odds-"]')
+    if o_el and re.fullmatch(r"\d{1,4}\.\d", o_el.get_text(strip=True)):
+        odds = float(o_el.get_text(strip=True))
+    n_el = tr.select_one('[id^="ninki-"]')
+    if n_el and re.fullmatch(r"\d{1,2}", n_el.get_text(strip=True)):
+        pop = int(n_el.get_text(strip=True))
+    if odds is None:  # fallback: anchor off body weight (older/DB shutuba format)
+        bw_i = next((i for i, c in enumerate(cells) if BODY_RE.search(c) or c in ("計不", "--")), None)
+        if bw_i is not None:
+            tail = cells[bw_i + 1:]
+            odds = next((_num(c) for c in tail if re.fullmatch(r"\d{1,4}\.\d", c)), None)
+            if odds is not None and pop is None:
+                after = tail[tail.index(f"{odds:g}") + 1:] if f"{odds:g}" in tail else tail
+                pop = next((_int(c) for c in after if re.fullmatch(r"\d{1,2}", c)), None)
     return odds, pop
 
 

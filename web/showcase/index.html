@@ -351,19 +351,21 @@ function fc(v){ // factor bar colour by magnitude (single-hue, thresholds are se
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 
 /* -- backtest / headline stats -- */
+const GRANK={GI:6,GII:5,GIII:4,L:3,OP:3,'':0};
 function computeStats(){
-  const races=DATA.races; let scored=0,winHit=0,plcHit=0,bestVal=null,roi=0,roiN=0;
+  const races=DATA.races; let scored=0,winHit=0,plcHit=0,bestVal=null,roi=0,roiN=0,marquee=null,topPick=null;
   races.forEach(rp=>{
     const res=rp.race.result||{}; const has=Object.keys(res).length>0;
     const top=rp.horses[0];
     if(has&&top){ scored++; const f=res[top.horse_id];
       if(f===1) winHit++; if(f&&f<=3) plcHit++;
-      // ROI of the single win recommendation
       if(top.odds){ roiN++; roi += (f===1? top.odds:0); }
     }
     rp.horses.forEach(h=>{ if(h.value!=null && (!bestVal||h.value>bestVal.value)) bestVal={...h,race:rp.race}; });
+    if(!marquee||(GRANK[rp.race.grade]||0)>(GRANK[marquee.race.grade]||0)||((GRANK[rp.race.grade]||0)===(GRANK[marquee.race.grade]||0)&&(rp.race.field_size||0)>(marquee.race.field_size||0))) marquee=rp;
+    if(top&&(!topPick||top.win_prob>topPick.win_prob)) topPick={...top,race:rp.race};
   });
-  return {n:races.length,scored,winHit,plcHit,bestVal,
+  return {n:races.length,scored,winHit,plcHit,bestVal,marquee,topPick,
     roi: roiN? Math.round(roi/roiN*100):null,
     winPct: scored? Math.round(winHit/scored*100):null,
     plcPct: scored? Math.round(plcHit/scored*100):null};
@@ -371,19 +373,20 @@ function computeStats(){
 function renderStats(){
   const s=computeStats();
   const cards=[];
-  cards.push(['分析レース数',s.n,DATA.venues.join(' / '),'turf']);
+  cards.push([s.scored?'分析レース数':'予想レース数',s.n,DATA.venues.join(' / '),'turf']);
   if(s.scored){
     cards.push(['◎の複勝的中率', s.plcPct+'%', `本命が3着内 ${s.plcHit}/${s.scored}R`,'gold']);
     cards.push(['◎の単勝的中率', s.winPct+'%', `本命が勝利 ${s.winHit}/${s.scored}R`,'sky']);
   }else{
-    cards.push(['ファクター数','13','多角的にスコアリング','sky']);
+    if(s.marquee){const m=s.marquee.race;cards.push(['今週の注目', (m.name||'').slice(0,7), `${m.venue}${m.race_no}R ${m.grade||''} ${m.surface||''}${m.distance||''}m`,'gold']);}
+    if(s.topPick){cards.push(['最有力の本命', s.topPick.horse_name.slice(0,7), `${s.topPick.race.venue}${s.topPick.race.race_no}R・勝率${Math.round(s.topPick.win_prob*100)}%`,'sky']);}
   }
   if(s.bestVal && s.bestVal.value>0){
     cards.push(['今週の妙味No.1', s.bestVal.horse_name.slice(0,7), `${s.bestVal.race.venue}${s.bestVal.race.race_no}R・EV${(s.bestVal.win_prob*s.bestVal.odds).toFixed(2)}`,'gold']);
   }else{
-    cards.push(['推奨馬券','自動生成','単複〜3連複まで','turf']);
+    cards.push([s.scored?'推奨馬券':'ファクター数', s.scored?'自動生成':'13', s.scored?'単複〜3連複まで':'多角的にスコアリング','turf']);
   }
-  document.getElementById('statGrid').innerHTML=cards.map(c=>
+  document.getElementById('statGrid').innerHTML=cards.slice(0,4).map(c=>
     `<div class="stat ${c[3]}"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="s">${esc(c[2])}</div></div>`).join('');
 }
 
@@ -402,6 +405,7 @@ function renderRaceBar(){
     const i=DATA.races.indexOf(rp); const r=rp.race,top=rp.horses[0];
     const res=r.result||{}; let hit='';
     if(Object.keys(res).length && top){ const f=res[top.horse_id]; hit=`<span class="hitdot">${f===1?'🎯':f&&f<=3?'✅':'—'}</span>`;}
+    else{ hit=`<span class="hitdot" title="発走前">🕒</span>`; }
     const g=r.grade&&r.grade!=='OP'?`<span class="gtag">${r.grade}</span>`:(r.grade==='OP'?'<span class="gtag" style="background:var(--slate)">OP</span>':'');
     return `<div class="racecard ${state.race===i?'on':''}" data-i="${i}">
       ${g||hit}
